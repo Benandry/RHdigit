@@ -6,11 +6,11 @@ use App\Entity\Departement;
 use App\Form\DepartementType;
 use App\Repository\DepartementRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('IS_AUTHENTICATED_FULLY')]
 #[Route('/admin/departement', name: 'app_departement.')]
@@ -38,7 +38,7 @@ class DepartementController extends AbstractController
             return $this->redirectToRoute('app_departement.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('departement/new.html.twig', [
+        return $this->render('departement/new.html.twig', [
             'departement' => $departement,
             'form' => $form,
         ]);
@@ -64,7 +64,7 @@ class DepartementController extends AbstractController
             return $this->redirectToRoute('app_departement.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('departement/edit.html.twig', [
+        return $this->render('departement/edit.html.twig', [
             'departement' => $departement,
             'form' => $form,
         ]);

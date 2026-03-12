@@ -6,12 +6,11 @@ use App\Entity\Poste;
 use App\Form\PosteType;
 use App\Repository\PosteRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('IS_AUTHENTICATED_FULLY')]
 #[Route('/admin/poste', name: 'app_poste.')]
@@ -39,7 +38,7 @@ class PosteController extends AbstractController
             return $this->redirectToRoute('app_poste.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('poste/new.html.twig', [
+        return $this->render('poste/new.html.twig', [
             'poste' => $poste,
             'form' => $form,
         ]);
@@ -57,7 +56,7 @@ class PosteController extends AbstractController
             return $this->redirectToRoute('app_poste.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('poste/edit.html.twig', [
+        return $this->render('poste/edit.html.twig', [
             'poste' => $poste,
             'form' => $form,
         ]);

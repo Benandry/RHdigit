@@ -6,11 +6,11 @@ use App\Entity\Leave;
 use App\Form\LeaveType;
 use App\Repository\LeaveRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('IS_AUTHENTICATED_FULLY')]
 #[Route('/admin/leave', name: 'app_leave.')]
@@ -38,7 +38,7 @@ class LeaveController extends AbstractController
             return $this->redirectToRoute('app_leave.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('leave/new.html.twig', [
+        return $this->render('leave/new.html.twig', [
             'leave' => $leave,
             'form' => $form,
         ]);
@@ -64,7 +64,7 @@ class LeaveController extends AbstractController
             return $this->redirectToRoute('app_leave.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('leave/edit.html.twig', [
+        return $this->render('leave/edit.html.twig', [
             'leave' => $leave,
             'form' => $form,
         ]);

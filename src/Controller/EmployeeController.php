@@ -6,11 +6,11 @@ use App\Entity\Employee;
 use App\Form\EmployeeType;
 use App\Repository\EmployeeRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('IS_AUTHENTICATED_FULLY')]
 #[Route('/admin/employee', name: 'app_employee.')]
@@ -38,7 +38,7 @@ class EmployeeController extends AbstractController
             return $this->redirectToRoute('app_employee.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('employee/new.html.twig', [
+        return $this->render('employee/new.html.twig', [
             'employee' => $employee,
             'form' => $form,
         ]);
@@ -65,7 +65,7 @@ class EmployeeController extends AbstractController
             return $this->redirectToRoute('app_employee.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('employee/edit.html.twig', [
+        return $this->render('employee/edit.html.twig', [
             'employee' => $employee,
             'form' => $form,
         ]);
