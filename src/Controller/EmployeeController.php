@@ -5,10 +5,11 @@ namespace App\Controller;
 use App\Entity\Employee;
 use App\Form\EmployeeType;
 use App\Repository\EmployeeRepository;
+use App\UseCase\Command\AddEmploye;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
@@ -25,15 +26,27 @@ class EmployeeController extends AbstractController
     }
 
     #[Route('/new', name: 'create', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request): Response
     {
         $employee = new Employee();
         $form = $this->createForm(EmployeeType::class, $employee);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($employee);
-            $entityManager->flush();
+
+            $this->handleCommand(new AddEmploye(
+                $employee->getFirstname(),
+                $employee->getLastname(),
+                $employee->getCin(),
+                $employee->getAdresse(),
+                $employee->getPhoneNumber(),
+                $employee->getSalary(),
+                $employee->getPoste(),
+                $employee->getContrat(),
+                $employee->getDateOfBirth()
+            ));
+
+            $this->addFlash('success', 'Create successfull');
 
             return $this->redirectToRoute('app_employee.index', [], Response::HTTP_SEE_OTHER);
         }
