@@ -41,7 +41,7 @@ class EmployeeRepository extends ServiceEntityRepository
         return $employe;
     }
 
-     public function remove(Employee $employee): void 
+    public function remove(Employee $employee): void 
     {
         $this->getEntityManager()->remove($employee);
         $this->getEntityManager()->flush();

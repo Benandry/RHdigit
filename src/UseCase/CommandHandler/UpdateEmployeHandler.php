@@ -17,7 +17,7 @@ final class UpdateEmployeHandler
     public function __invoke(UpdateEmploye $command): void
     {
         $employe = $this->repository->getById($command->employeId);
-
+         
         $employe->setFirstname($command->firstname)
                 ->setLastname($command->lastname)
                 ->setCin($command->cin)

@@ -86,7 +86,7 @@ class EmployeeController extends AbstractController
                 $employee->getDateOfBirth()
             ));
 
-            $this->addFlash('success', 'Create successfull');
+            $this->addFlash('success', 'Update successfull');
             return $this->redirectToRoute('app_employee.index', [], Response::HTTP_SEE_OTHER);
         }
 
