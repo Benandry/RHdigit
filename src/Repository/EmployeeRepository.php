@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Employee;
+use App\Exception\NotFoundException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Exception;
 
 /**
  * @extends ServiceEntityRepository<Employee>
@@ -24,6 +26,24 @@ class EmployeeRepository extends ServiceEntityRepository
     public function add(Employee $employee): void 
     {
         $this->getEntityManager()->persist($employee);
+        $this->getEntityManager()->flush();
+    }
+    
+    public function getById(int $id): Employee
+    {
+        $employe = $this->find($id);
+
+        if(null === $employe)
+        {
+            throw NotFoundException::withId($id);
+        }
+
+        return $employe;
+    }
+
+     public function remove(Employee $employee): void 
+    {
+        $this->getEntityManager()->remove($employee);
         $this->getEntityManager()->flush();
     }
 }

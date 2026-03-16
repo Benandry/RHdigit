@@ -6,10 +6,10 @@ use App\Entity\Employee;
 use App\Form\EmployeeType;
 use App\Repository\EmployeeRepository;
 use App\UseCase\Command\AddEmploye;
-use Doctrine\ORM\EntityManagerInterface;
+use App\UseCase\Command\RemoveEmploye;
+use App\UseCase\Command\UpdateEmploye;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
@@ -67,14 +67,26 @@ class EmployeeController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Employee $employee, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Employee $employee): Response
     {
         $form = $this->createForm(EmployeeType::class, $employee);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-            // dd($employee->getImageName());
+            $this->handleCommand(new UpdateEmploye(
+                $employee->getId(),
+                $employee->getFirstname(),
+                $employee->getLastname(),
+                $employee->getCin(),
+                $employee->getAdresse(),
+                $employee->getPhoneNumber(),
+                $employee->getSalary(),
+                $employee->getPoste(),
+                $employee->getContrat(),
+                $employee->getDateOfBirth()
+            ));
+
+            $this->addFlash('success', 'Create successfull');
             return $this->redirectToRoute('app_employee.index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -85,12 +97,14 @@ class EmployeeController extends AbstractController
     }
 
     #[Route('/{id}', name: 'delete', methods: ['POST'])]
-    public function delete(Request $request, Employee $employee, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Employee $employee): Response
     {
         if ($this->isCsrfTokenValid('delete' . $employee->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($employee);
-            $entityManager->flush();
+            $this->handleCommand(new RemoveEmploye($employee->getId()));
         }
+
+        $this->addFlash('success', 'Remove Employee successfully');
+
 
         return $this->redirectToRoute('app_employee.index', [], Response::HTTP_SEE_OTHER);
     }
