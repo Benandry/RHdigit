@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UseCase\Command;
+namespace App\EmployeManagement\Application\UseCase\Command;
 
 use App\Entity\Contrat;
 use App\Entity\Poste;

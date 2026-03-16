@@ -1,9 +1,9 @@
 <?php
 
-namespace App\UseCase\CommandHandler;
+namespace App\EmployeManagement\Application\UseCase\CommandHandler;
 
+use App\EmployeManagement\Application\UseCase\Command\UpdateEmploye;
 use App\Repository\EmployeeRepository;
-use App\UseCase\Command\UpdateEmploye;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]

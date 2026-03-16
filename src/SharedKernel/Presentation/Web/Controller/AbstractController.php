@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\SharedKernel\Presentation\Web\Controller;
 
 use App\Bus\CommandBus;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as SymfonyController;
@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as SymfonyContr
  * Class AbstractController
  * 
  * @author Eloi Charly <nandry556@gmail.com>
- * 
+ * @package App\SharedKernel\Presentation\Web\Controller
  */
 
 

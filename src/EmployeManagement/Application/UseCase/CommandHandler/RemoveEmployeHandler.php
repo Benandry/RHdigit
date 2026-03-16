@@ -1,9 +1,9 @@
 <?php
 
-namespace App\UseCase\CommandHandler;
+namespace App\EmployeManagement\Application\UseCase\CommandHandler;
 
+use App\EmployeManagement\Application\UseCase\Command\RemoveEmploye;
 use App\Repository\EmployeeRepository;
-use App\UseCase\Command\RemoveEmploye;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]

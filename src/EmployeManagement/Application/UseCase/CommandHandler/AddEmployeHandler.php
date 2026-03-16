@@ -1,10 +1,10 @@
 <?php
 
-namespace App\UseCase\CommandHandler;
+namespace App\EmployeManagement\Application\UseCase\CommandHandler;
 
+use App\EmployeManagement\Application\UseCase\Command\AddEmploye;
 use App\Entity\Employee;
 use App\Repository\EmployeeRepository;
-use App\UseCase\Command\AddEmploye;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
