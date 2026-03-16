@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Repository;
+namespace App\EmployeManagement\Infrastructure\Doctrine;
 
+use App\EmployeManagement\Domain\Exception\NotFoundException;
+use App\EmployeManagement\Domain\Model\Repository\EmployeRepository;
 use App\Entity\Employee;
-use App\Exception\NotFoundException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Exception;
-
 /**
  * @extends ServiceEntityRepository<Employee>
  *
@@ -16,7 +15,7 @@ use Exception;
  * @method Employee[]    findAll()
  * @method Employee[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class EmployeeRepository extends ServiceEntityRepository
+class EmployeeOrmRepository extends ServiceEntityRepository implements EmployeRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

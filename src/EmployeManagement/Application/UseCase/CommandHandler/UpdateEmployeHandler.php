@@ -3,14 +3,14 @@
 namespace App\EmployeManagement\Application\UseCase\CommandHandler;
 
 use App\EmployeManagement\Application\UseCase\Command\UpdateEmploye;
-use App\Repository\EmployeeRepository;
+use App\EmployeManagement\Domain\Model\Repository\EmployeRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
 final class UpdateEmployeHandler
 {
     public function __construct(
-        private readonly EmployeeRepository $repository
+        private readonly EmployeRepository $repository
     )
     {
     }

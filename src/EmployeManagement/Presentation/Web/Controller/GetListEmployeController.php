@@ -2,7 +2,7 @@
 
 namespace App\EmployeManagement\Presentation\Web\Controller;
 
-use App\Repository\EmployeeRepository;
+use App\EmployeManagement\Infrastructure\Doctrine\EmployeeOrmRepository;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -12,7 +12,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/admin/employee/index', name: 'app_employee.index', methods: ['GET'])]
 class GetListEmployeController extends AbstractController
 {
-    public function __invoke(EmployeeRepository $employeeRepository): Response
+    public function __invoke(EmployeeOrmRepository $employeeRepository): Response
     {
         return $this->render('employee/index.html.twig', [
             'employees' => $employeeRepository->findAll(),
