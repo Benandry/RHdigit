@@ -6,7 +6,7 @@ use App\EmployeManagement\Application\UseCase\Command\UpdateEmploye;
 use App\EmployeManagement\Domain\Model\Repository\EmployeRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
-#[AsMessageHandler]
+#[AsMessageHandler('command.bus')]
 final class UpdateEmployeHandler
 {
     public function __construct(
