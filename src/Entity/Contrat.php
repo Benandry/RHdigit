@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\EmployeManagement\Domain\Model\Entity\Employee;
 use App\Repository\ContratRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

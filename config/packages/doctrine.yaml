@@ -16,6 +16,12 @@ doctrine:
                 prefix: 'App\Entity'
                 alias: App
 
+            App\EmployeManagement:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/EmployeManagement/Domain/Model/Entity'
+                prefix: 'App\EmployeManagement\Domain\Model\Entity'
+                alias: EmployeManagement
+
 when@test:
     doctrine:
         dbal:

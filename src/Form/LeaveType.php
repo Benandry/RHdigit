@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Employee;
+use App\EmployeManagement\Domain\Model\Entity\Employee;
 use App\Entity\Leave;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;

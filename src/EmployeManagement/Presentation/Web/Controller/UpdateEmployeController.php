@@ -3,7 +3,7 @@
 namespace App\EmployeManagement\Presentation\Web\Controller;
 
 use App\EmployeManagement\Application\UseCase\Command\UpdateEmploye;
-use App\Entity\Employee;
+use App\EmployeManagement\Domain\Model\Entity\Employee;
 use App\Form\EmployeeType;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

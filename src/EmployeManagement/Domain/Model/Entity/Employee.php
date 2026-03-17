@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Entity;
+namespace App\EmployeManagement\Domain\Model\Entity;
 
 use App\EmployeManagement\Infrastructure\Doctrine\EmployeeOrmRepository;
+use App\Entity\Contrat;
+use App\Entity\Leave;
+use App\Entity\Poste;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;

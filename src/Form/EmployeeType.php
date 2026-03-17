@@ -2,8 +2,8 @@
 
 namespace App\Form;
 
+use App\EmployeManagement\Domain\Model\Entity\Employee;
 use App\Entity\Contrat;
-use App\Entity\Employee;
 use App\Entity\Poste;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;

@@ -3,8 +3,8 @@
 namespace App\EmployeManagement\Infrastructure\Doctrine;
 
 use App\EmployeManagement\Domain\Exception\NotFoundException;
+use App\EmployeManagement\Domain\Model\Entity\Employee;
 use App\EmployeManagement\Domain\Model\Repository\EmployeRepository;
-use App\Entity\Employee;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 /**

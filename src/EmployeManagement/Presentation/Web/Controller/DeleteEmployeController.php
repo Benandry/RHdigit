@@ -3,7 +3,7 @@
 namespace App\EmployeManagement\Presentation\Web\Controller;
 
 use App\EmployeManagement\Application\UseCase\Command\RemoveEmploye;
-use App\Entity\Employee;
+use App\EmployeManagement\Domain\Model\Entity\Employee;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

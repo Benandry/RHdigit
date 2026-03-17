@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\EmployeManagement\Domain\Model\Repository;
 
-use App\Entity\Employee;
+use App\EmployeManagement\Domain\Model\Entity\Employee;
 
 /**
  * Class EmployeRepository
