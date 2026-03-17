@@ -20,17 +20,17 @@ class EmployeeType extends AbstractType
         $builder
             ->add('imageFile', FileType::class, [
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-4',
+                    'class' => 'block  font-medium text-gray-700 mb-4',
                 ],
                 'attr' => [
-                    'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4 cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100',
+                    'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4 cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file: file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100',
                     'placeholder' => 'Sélectionnez une image...',
                 ]
             ])
             ->add('firstname', TextType::class, [
                 'label' => 'Nom du employé',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-4',
+                    'class' => 'block  font-medium text-gray-700 mb-4',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -40,7 +40,7 @@ class EmployeeType extends AbstractType
             ->add('lastname', TextType::class, [
                 'label' => 'Prénom du employé',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-4',
+                    'class' => 'block  font-medium text-gray-700 mb-4',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -50,7 +50,7 @@ class EmployeeType extends AbstractType
             ->add('cin', TextType::class, [
                 'label' => 'CIN',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-4',
+                    'class' => 'block  font-medium text-gray-700 mb-4',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -62,7 +62,7 @@ class EmployeeType extends AbstractType
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-4',
+                    'class' => 'block  font-medium text-gray-700 mb-4',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -72,7 +72,7 @@ class EmployeeType extends AbstractType
             ->add('adresse', TextType::class, [
                 'label' => 'Adresse',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-4',
+                    'class' => 'block  font-medium text-gray-700 mb-4',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -82,7 +82,7 @@ class EmployeeType extends AbstractType
             ->add('phoneNumber', TextType::class, [
                 'label' => 'Numéro de Téléphone',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-4',
+                    'class' => 'block  font-medium text-gray-700 mb-4',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -92,7 +92,7 @@ class EmployeeType extends AbstractType
             ->add('salary', TextType::class, [
                 'label' => 'Salaire',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-4',
+                    'class' => 'block  font-medium text-gray-700 mb-4',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -105,7 +105,7 @@ class EmployeeType extends AbstractType
                 'choice_label' => 'name',
                 'label' => 'Poste',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-2',
+                    'class' => 'block  font-medium text-gray-700 mb-2',
                 ],
                 'attr' => [
                     'placeholder' => 'Sélectionnez le poste  ',
@@ -118,7 +118,7 @@ class EmployeeType extends AbstractType
                 'choice_label' => 'name',
                 'label' => 'Contrat',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-2',
+                    'class' => 'block  font-medium text-gray-700 mb-2',
                 ],
                 'attr' => [
                     'placeholder' => 'Sélectionnez le contrat  ',

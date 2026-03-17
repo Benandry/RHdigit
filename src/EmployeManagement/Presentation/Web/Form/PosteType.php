@@ -19,7 +19,7 @@ class PosteType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom du poste',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-2',
+                    'class' => 'block  font-medium text-gray-700 mb-2',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -28,7 +28,7 @@ class PosteType extends AbstractType
             ])
             ->add('description', TextareaType::class, [
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-2',
+                    'class' => 'block  font-medium text-gray-700 mb-2',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -40,7 +40,7 @@ class PosteType extends AbstractType
                 'class' => Departement::class,
                 'label' => 'Departement',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-2',
+                    'class' => 'block  font-medium text-gray-700 mb-2',
                 ],
                 'attr' => [
                     'class' => 'mb-4',

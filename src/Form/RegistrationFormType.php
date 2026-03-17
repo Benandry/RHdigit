@@ -22,7 +22,7 @@ class RegistrationFormType extends AbstractType
             ->add('username', TextType::class, [
                 'label' => 'Nom d\'utilisateur',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium mb-2',
+                    'class' => 'block  font-medium mb-2',
                 ],
                 'attr' => [
                     'class' => 'w-full px-2 py-2 rounded-lg border border-white/20 bg-white/10 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400',
@@ -32,7 +32,7 @@ class RegistrationFormType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Adresse e-mail',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium mb-2',
+                    'class' => 'block  font-medium mb-2',
                 ],
                 'attr' => [
                     'class' => 'w-full px-2 py-2 rounded-lg border border-white/20 bg-white/10 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400',
@@ -45,7 +45,7 @@ class RegistrationFormType extends AbstractType
                     'class' => 'mr-2',
                 ],
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium',
+                    'class' => 'block  font-medium',
                 ],
                 'required' => true,
                 'mapped' => false,
@@ -60,7 +60,7 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'label' => 'Mot de passe',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium mb-2',
+                    'class' => 'block  font-medium mb-2',
                 ],
                 'attr' => [
                     'class' => 'w-full px-2 py-2 rounded-lg border border-white/20 bg-white/10 text-white placeholder-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400',

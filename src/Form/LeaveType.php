@@ -23,7 +23,7 @@ class LeaveType extends AbstractType
                 'widget' => 'single_text',
                 'input' => 'datetime_immutable',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-4',
+                    'class' => 'block  font-medium text-gray-700 mb-4',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -34,7 +34,7 @@ class LeaveType extends AbstractType
                 'label' => 'Nombre de jours',
                 'html5' => true,
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-2',
+                    'class' => 'block  font-medium text-gray-700 mb-2',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
@@ -49,7 +49,7 @@ class LeaveType extends AbstractType
                     'Rejected' => 'rejected',
                 ],
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-2',
+                    'class' => 'block  font-medium text-gray-700 mb-2',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
@@ -58,7 +58,7 @@ class LeaveType extends AbstractType
             ->add('motif', TextareaType::class, [
                 'label' => 'Motif',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700',
+                    'class' => 'block  font-medium text-gray-700',
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -72,7 +72,7 @@ class LeaveType extends AbstractType
                     return $employee->getFirstName() . ' ' . $employee->getLastName();
                 },
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700 mb-2',
+                    'class' => 'block  font-medium text-gray-700 mb-2',
                 ],
                 'attr' => [
                     'class' => 'mb-4',

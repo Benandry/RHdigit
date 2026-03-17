@@ -22,7 +22,7 @@ class StaffType extends AbstractType
         $builder->add('firstname', TextType::class, [
             'label' => 'Nom du staff',
             'label_attr' => [
-                'class' => 'block text-sm font-medium text-gray-700', // Classes pour le libellé
+                'class' => 'block  font-medium text-gray-700', // Classes pour le libellé
             ],
             'attr' => [
                 'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -32,7 +32,7 @@ class StaffType extends AbstractType
             ->add('lastname', TextType::class, [
                 'label' => 'Prénom du staff',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700', // Classes pour le libellé
+                    'class' => 'block  font-medium text-gray-700', // Classes pour le libellé
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -43,7 +43,7 @@ class StaffType extends AbstractType
                 'label' => 'Date de naissance',
                 'widget' => 'single_text',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700', // Classes pour le libellé
+                    'class' => 'block  font-medium text-gray-700', // Classes pour le libellé
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -53,7 +53,7 @@ class StaffType extends AbstractType
             ->add('number_cin', TextType::class, [
                 'label' => 'Numéro de CIN',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700', // Classes pour le libellé
+                    'class' => 'block  font-medium text-gray-700', // Classes pour le libellé
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -63,7 +63,7 @@ class StaffType extends AbstractType
             ->add('number_matricule', TextType::class, [
                 'label' => 'Numéro de matricule',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700', // Classes pour le libellé
+                    'class' => 'block  font-medium text-gray-700', // Classes pour le libellé
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -73,7 +73,7 @@ class StaffType extends AbstractType
             ->add('adresse_exact', TextType::class, [
                 'label' => 'Adresse exacte',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700', // Classes pour le libellé
+                    'class' => 'block  font-medium text-gray-700', // Classes pour le libellé
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -83,7 +83,7 @@ class StaffType extends AbstractType
             ->add('work_post', TextType::class, [
                 'label' => 'Poste de travail',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700', // Classes pour le libellé
+                    'class' => 'block  font-medium text-gray-700', // Classes pour le libellé
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -93,7 +93,7 @@ class StaffType extends AbstractType
             ->add('phone_number', TextType::class, [
                 'label' => 'Numéro de téléphone',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700', // Classes pour le libellé
+                    'class' => 'block  font-medium text-gray-700', // Classes pour le libellé
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -103,7 +103,7 @@ class StaffType extends AbstractType
             ->add('situation_family', TextType::class, [
                 'label' => 'Situation familiale',
                 'label_attr' => [
-                    'class' => 'block text-sm font-medium text-gray-700', // Classes pour le libellé
+                    'class' => 'block  font-medium text-gray-700', // Classes pour le libellé
                 ],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4', // Ajout de mb-4 pour la marge
@@ -117,14 +117,14 @@ class StaffType extends AbstractType
                     'Madame' => 'Mme',
                     'Mademoiselle' => 'Mlle',
                 ],
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                 ],
             ])
             ->add('nationality', CountryType::class, [
                 'label' => 'Nationalité',
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                 ],
@@ -132,7 +132,7 @@ class StaffType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Adresse email',
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                     'placeholder' => 'exemple@email.com',
@@ -140,7 +140,7 @@ class StaffType extends AbstractType
             ])
             ->add('code_postal', TextType::class, [
                 'label' => 'Code postal',
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                     'placeholder' => 'Entrez le code postal',
@@ -148,7 +148,7 @@ class StaffType extends AbstractType
             ])
             ->add('number_child', IntegerType::class, [
                 'label' => 'Nombre d\'enfants',
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                     'placeholder' => '0',
@@ -157,7 +157,7 @@ class StaffType extends AbstractType
             ])
             ->add('lieu', TextType::class, [
                 'label' => 'Lieu',
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                     'placeholder' => 'Entrez le lieu',
@@ -165,7 +165,7 @@ class StaffType extends AbstractType
             ])
             ->add('salary_base', NumberType::class, [
                 'label' => 'Salaire de base',
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                     'placeholder' => '0000.00',
@@ -175,7 +175,7 @@ class StaffType extends AbstractType
             ->add('date_begin', DateType::class, [
                 'label' => 'Date de début',
                 'widget' => 'single_text',
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                 ],
@@ -184,14 +184,14 @@ class StaffType extends AbstractType
                 'label' => 'Date de fin',
                 'widget' => 'single_text',
                 'required' => false,
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                 ],
             ])
             ->add('hours_per_week', IntegerType::class, [
                 'label' => 'Heures/semaine',
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                     'placeholder' => '35',
@@ -200,7 +200,7 @@ class StaffType extends AbstractType
             ])
             ->add('day_per_week', IntegerType::class, [
                 'label' => 'Jours/semaine',
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                     'placeholder' => '5',
@@ -211,7 +211,7 @@ class StaffType extends AbstractType
             ->add('horary', TimeType::class, [
                 'label' => 'Horaire',
                 'widget' => 'single_text',
-                'label_attr' => ['class' => 'block text-sm font-medium text-gray-700'],
+                'label_attr' => ['class' => 'block  font-medium text-gray-700'],
                 'attr' => [
                     'class' => 'mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-4',
                 ],
