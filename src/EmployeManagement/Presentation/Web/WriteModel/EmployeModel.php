@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\File\File;
  * @author Charly <nandry556@gmail.com>
  */
 
-final readonly class EmployeModel
+final class EmployeModel
 {
     public function __construct(
         public ?string $firstname = null,
