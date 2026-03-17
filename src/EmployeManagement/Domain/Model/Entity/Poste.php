@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Entity;
+namespace App\EmployeManagement\Domain\Model\Entity;
 
-use App\Repository\DepartementRepository;
+use App\EmployeManagement\Domain\Model\Entity\Employee;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: DepartementRepository::class)]
+#[ORM\Entity]
 #[ORM\HasLifecycleCallbacks]
-class Departement
+class Poste
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -20,10 +20,11 @@ class Departement
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'departement', targetEntity: Poste::class, orphanRemoval: true)]
-    private Collection $postes;
+    #[ORM\ManyToOne(inversedBy: 'postes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Departement $departement = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column]
@@ -32,11 +33,13 @@ class Departement
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\OneToMany(mappedBy: 'poste', targetEntity: Employee::class, orphanRemoval: true)]
+    private Collection $employees;
+
     public function __construct()
     {
-        $this->postes = new ArrayCollection();
+        $this->employees = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -55,32 +58,14 @@ class Departement
         return $this;
     }
 
-    /**
-     * @return Collection<int, Poste>
-     */
-    public function getPostes(): Collection
+    public function getDepartement(): ?Departement
     {
-        return $this->postes;
+        return $this->departement;
     }
 
-    public function addPoste(Poste $poste): static
+    public function setDepartement(?Departement $departement): static
     {
-        if (!$this->postes->contains($poste)) {
-            $this->postes->add($poste);
-            $poste->setDepartement($this);
-        }
-
-        return $this;
-    }
-
-    public function removePoste(Poste $poste): static
-    {
-        if ($this->postes->removeElement($poste)) {
-            // set the owning side to null (unless already changed)
-            if ($poste->getDepartement() === $this) {
-                $poste->setDepartement(null);
-            }
-        }
+        $this->departement = $departement;
 
         return $this;
     }
@@ -90,7 +75,7 @@ class Departement
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
@@ -120,15 +105,45 @@ class Departement
 
         return $this;
     }
+
     #[ORM\PrePersist]
-    public function createdAtValue(): void
+    public function prePersist(): void
     {
         $this->createdAt = new \DateTimeImmutable();
     }
-
     #[ORM\PreUpdate]
-    public function updatedAtValue(): void
+    public function preUpdate(): void
     {
         $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    /**
+     * @return Collection<int, Employee>
+     */
+    public function getEmployees(): Collection
+    {
+        return $this->employees;
+    }
+
+    public function addEmployee(Employee $employee): static
+    {
+        if (!$this->employees->contains($employee)) {
+            $this->employees->add($employee);
+            $employee->setPoste($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmployee(Employee $employee): static
+    {
+        if ($this->employees->removeElement($employee)) {
+            // set the owning side to null (unless already changed)
+            if ($employee->getPoste() === $this) {
+                $employee->setPoste(null);
+            }
+        }
+
+        return $this;
     }
 }

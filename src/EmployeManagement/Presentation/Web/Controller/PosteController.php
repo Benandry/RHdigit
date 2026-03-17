@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\EmployeManagement\Presentation\Web\Controller;
 
-use App\Entity\Poste;
-use App\Form\PosteType;
-use App\Repository\PosteRepository;
+use App\EmployeManagement\Domain\Model\Entity\Poste;
+use App\EmployeManagement\Infrastructure\PosteRepository;
+use App\EmployeManagement\Presentation\Web\Form\PosteType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

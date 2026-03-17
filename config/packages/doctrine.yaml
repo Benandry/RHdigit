@@ -16,8 +16,9 @@ doctrine:
                 prefix: 'App\Entity'
                 alias: App
 
-            App\EmployeManagement:
+            EmployeManagement:
                 is_bundle: false
+                type: attribute
                 dir: '%kernel.project_dir%/src/EmployeManagement/Domain/Model/Entity'
                 prefix: 'App\EmployeManagement\Domain\Model\Entity'
                 alias: EmployeManagement

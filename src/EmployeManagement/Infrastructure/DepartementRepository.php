@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\EmployeManagement\Infrastructure;
 
-use App\Entity\Departement;
+use App\EmployeManagement\Domain\Model\Entity\Departement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\EmployeManagement\Presentation\Web\WriteModel;
 
+use App\EmployeManagement\Domain\Model\Entity\Contrat;
 use App\EmployeManagement\Domain\Model\Entity\Employee;
-use App\Entity\Contrat;
-use App\Entity\Poste;
+use App\EmployeManagement\Domain\Model\Entity\Poste;
 use DateTimeImmutable;
 use Symfony\Component\HttpFoundation\File\File;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\EmployeManagement\Domain\Model\Entity;
 
 use App\EmployeManagement\Domain\Model\Entity\Employee;
 use App\Repository\ContratRepository;
@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ContratRepository::class)]
+#[ORM\Entity]
 class Contrat
 {
     #[ORM\Id]

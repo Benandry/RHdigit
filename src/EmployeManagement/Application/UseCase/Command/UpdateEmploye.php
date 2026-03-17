@@ -2,8 +2,8 @@
 
 namespace App\EmployeManagement\Application\UseCase\Command;
 
-use App\Entity\Contrat;
-use App\Entity\Poste;
+use App\EmployeManagement\Domain\Model\Entity\Contrat;
+use App\EmployeManagement\Domain\Model\Entity\Poste;
 use Symfony\Component\Messenger\Attribute\AsMessage;
 
 #[AsMessage('sync')]

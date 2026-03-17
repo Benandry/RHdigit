@@ -2,9 +2,9 @@
 
 namespace App\EmployeManagement\Presentation\Web\Form;
 
+use App\EmployeManagement\Domain\Model\Entity\Contrat;
+use App\EmployeManagement\Domain\Model\Entity\Poste;
 use App\EmployeManagement\Presentation\Web\WriteModel\EmployeModel;
-use App\Entity\Contrat;
-use App\Entity\Poste;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;

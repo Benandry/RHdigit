@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('IS_AUTHENTICATED_FULLY')]
-#[Route('/admin/employee', name: 'app_employee.delete', methods: ['POST'])]
+#[Route('/admin/employee/{id}', name: 'app_employee.delete', methods: ['POST'])]
 class DeleteEmployeController extends AbstractController
 {
     public function __invoke(Request $request, Employee $employee): Response
