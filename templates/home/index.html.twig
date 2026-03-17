@@ -1,14 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}Tableau de bord - {{ parent() }}
 {% endblock %}
 
 {% block body %}
-	<div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
-		{{ include("utils/widget.html.twig", { total: 100, subtitle: "Nombre total de employés", title: "Employés", icon: "fas fa-users" }) }}
-		{{ include("utils/widget.html.twig", { total: 12, subtitle: "Département dans le société", title: "Départements", icon: "fas fa-building" }) }}
-		{{ include("utils/widget.html.twig", { total: 100, subtitle: "Nombre total de postes", title: "Postes", icon: "fas fa-briefcase" }) }}
+    <div class="p-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+            {{ include("utils/_widget.html.twig", { total: 100, subtitle: "Nombre total de employés", title: "Employés", icon: "fas fa-users" }) }}
+            {{ include("utils/_widget.html.twig", { total: 12, subtitle: "Département dans le société", title: "Départements", icon: "fas fa-building" }) }}
+            {{ include("utils/_widget.html.twig", { total: 100, subtitle: "Nombre total de postes", title: "Postes", icon: "fas fa-briefcase" }) }}
+        </div>
 
-	</div>
-
+        <!-- Chart Section -->
+        <div class="mt-8 p-4 bg-white shadow rounded-lg">
+            <h2 class="text-lg font-semibold mb-4">Statistiques des employés</h2>
+            <div class="w-full md:w-2/3 lg:w-1/2 mx-auto">
+                {{ render_chart(chart) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
