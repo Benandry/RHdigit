@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EmployeManagement\Presentation\Web\Controller;
+namespace App\EmployeManagement\Presentation\Web\Controller\Employe;
 
 use App\EmployeManagement\Application\UseCase\Query\GetListEmploye;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;

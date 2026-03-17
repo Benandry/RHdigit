@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EmployeManagement\Presentation\Web\Controller;
+namespace App\EmployeManagement\Presentation\Web\Controller\Employe;
 
 use App\EmployeManagement\Application\UseCase\Command\RemoveEmploye;
 use App\EmployeManagement\Domain\Model\Entity\Employee;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\EmployeManagement\Presentation\Web\Controller;
+namespace App\EmployeManagement\Presentation\Web\Controller\Employe;
 
-use App\EmployeManagement\Application\UseCase\Command\AddEmploye;
+use App\EmployeManagement\Application\UseCase\Command\UpdateEmploye;
 use App\EmployeManagement\Domain\Model\Entity\Employee;
 use App\EmployeManagement\Presentation\Web\Form\EmployeeType;
 use App\EmployeManagement\Presentation\Web\WriteModel\EmployeModel;
@@ -13,18 +13,18 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('IS_AUTHENTICATED_FULLY')]
-#[Route('/admin/employee/new', name: 'app_employee.create',methods: ['GET', 'POST'])]
-class CreateEmployeController extends AbstractController
+#[Route('/admin/employee/{id}/edit', name: 'app_employee.edit', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
+class UpdateEmployeController extends AbstractController
 {
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request, Employee $employee): Response
     {
-        $employeModel = new EmployeModel();
+        $employeModel = EmployeModel::createFromEmployee($employee);
         $form = $this->createForm(EmployeeType::class, $employeModel);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $this->handleCommand(new AddEmploye(
+            $this->handleCommand(new UpdateEmploye(
+                $employee->getId(),
                 $employeModel->firstname,
                 $employeModel->lastname,
                 $employeModel->cin,
@@ -36,12 +36,11 @@ class CreateEmployeController extends AbstractController
                 $employeModel->dateOfBirth
             ));
 
-            $this->addFlash('success', 'Create successfull');
-
+            $this->addFlash('success', 'Update successfull');
             return $this->redirectToRoute('app_employee.index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('employee/new.html.twig', [
+        return $this->render('employee/edit.html.twig', [
             'employee' => $employeModel,
             'form' => $form,
         ]);
