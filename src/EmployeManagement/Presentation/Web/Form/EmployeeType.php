@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Form;
+namespace App\EmployeManagement\Presentation\Web\Form;
 
-use App\EmployeManagement\Domain\Model\Entity\Employee;
+use App\EmployeManagement\Presentation\Web\WriteModel\EmployeModel;
 use App\Entity\Contrat;
 use App\Entity\Poste;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -12,7 +12,6 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Image;
 
 class EmployeeType extends AbstractType
 {
@@ -131,7 +130,7 @@ class EmployeeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Employee::class,
+            'data_class' => EmployeModel::class,
         ]);
     }
 }

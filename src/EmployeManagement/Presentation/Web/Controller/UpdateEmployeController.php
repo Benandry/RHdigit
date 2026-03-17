@@ -4,7 +4,8 @@ namespace App\EmployeManagement\Presentation\Web\Controller;
 
 use App\EmployeManagement\Application\UseCase\Command\UpdateEmploye;
 use App\EmployeManagement\Domain\Model\Entity\Employee;
-use App\Form\EmployeeType;
+use App\EmployeManagement\Presentation\Web\Form\EmployeeType;
+use App\EmployeManagement\Presentation\Web\WriteModel\EmployeModel;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,21 +18,22 @@ class UpdateEmployeController extends AbstractController
 {
     public function __invoke(Request $request, Employee $employee): Response
     {
-        $form = $this->createForm(EmployeeType::class, $employee);
+        $employeModel = EmployeModel::createFromEmployee($employee);
+        $form = $this->createForm(EmployeeType::class, $employeModel);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->handleCommand(new UpdateEmploye(
                 $employee->getId(),
-                $employee->getFirstname(),
-                $employee->getLastname(),
-                $employee->getCin(),
-                $employee->getAdresse(),
-                $employee->getPhoneNumber(),
-                $employee->getSalary(),
-                $employee->getPoste(),
-                $employee->getContrat(),
-                $employee->getDateOfBirth()
+                $employeModel->firstname,
+                $employeModel->lastname,
+                $employeModel->cin,
+                $employeModel->adresse,
+                $employeModel->phoneNumber,
+                $employeModel->salary,
+                $employeModel->poste,
+                $employeModel->contrat,
+                $employeModel->dateOfBirth
             ));
 
             $this->addFlash('success', 'Update successfull');
@@ -39,7 +41,7 @@ class UpdateEmployeController extends AbstractController
         }
 
         return $this->render('employee/edit.html.twig', [
-            'employee' => $employee,
+            'employee' => $employeModel,
             'form' => $form,
         ]);
     }
