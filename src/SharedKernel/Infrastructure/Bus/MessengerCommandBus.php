@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Bus;
+namespace App\SharedKernel\Infrastructure\Bus;
 
+use App\SharedKernel\Application\Bus\CommandBus;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
- * Class CommandBus
+ * Class MessengerCommandBus
  * 
  * @author Eloi Charly <nandry556@gmail.com>
+ * @package App\SharedKernel\Infrastructure\Bus;
  */
 
-final class CommandBus
+final class MessengerCommandBus implements CommandBus
 {
     use HandleTrait {
         handle as messengerHandle;
@@ -37,10 +39,5 @@ final class CommandBus
 
             throw $th;
         }
-    }
-
-    public function dispatch(object $message)
-    {
-        $this->messageBus->dispatch($message);
     }
 }

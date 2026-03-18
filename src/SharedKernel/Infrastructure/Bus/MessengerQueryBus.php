@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Bus;
+namespace App\SharedKernel\Infrastructure\Bus;
 
+use App\SharedKernel\Application\Bus\QueryBus;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
- * Class queryBus
+ * Class MessengerQueryBus
  * 
  * @author Eloi Charly <nandry556@gmail.com>
+ * @package App\SharedKernel\Infrastructure\Bus;
  */
 
-final class QueryBus
+final class MessengerQueryBus implements QueryBus
 {
     use HandleTrait {
         handle as messengerHandle;
@@ -37,10 +39,5 @@ final class QueryBus
 
             throw $th;
         }
-    }
-
-    public function dispatch(object $message)
-    {
-        $this->messageBus->dispatch($message);
     }
 }

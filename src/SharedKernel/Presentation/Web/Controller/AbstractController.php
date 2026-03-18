@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\SharedKernel\Presentation\Web\Controller;
 
-use App\Bus\CommandBus;
-use App\Bus\QueryBus;
+use App\SharedKernel\Application\Bus\CommandBus;
+use App\SharedKernel\Application\Bus\QueryBus;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as SymfonyController;
 
 /**
@@ -33,8 +33,8 @@ abstract class AbstractController extends SymfonyController
         $this->container->get(CommandBus::class)->handle($command);
     }
 
-    protected function handleQuery(object $command): mixed
+    protected function handleQuery(object $query): mixed
     {
-        return $this->container->get(QueryBus::class)->handle($command);
+        return $this->container->get(QueryBus::class)->handle($query);
     }
 }
