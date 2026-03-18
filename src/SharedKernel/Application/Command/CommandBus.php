@@ -1,6 +1,6 @@
 <?php
 
-namespace App\SharedKernel\Application\Bus;
+namespace App\SharedKernel\Application\Command;
 
 /**
  * Interface CommandBus

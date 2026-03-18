@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\SharedKernel\Presentation\Web\Controller;
 
-use App\SharedKernel\Application\Bus\CommandBus;
-use App\SharedKernel\Application\Bus\QueryBus;
+use App\SharedKernel\Application\Command\CommandBus;
+use App\SharedKernel\Application\Query\QueryBus;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as SymfonyController;
 
 /**

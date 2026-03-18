@@ -1,6 +1,6 @@
 <?php
 
-namespace App\SharedKernel\Application\Bus;
+namespace App\SharedKernel\Application\Query;
 
 /**
  * Interface QueryBus
@@ -9,7 +9,7 @@ namespace App\SharedKernel\Application\Bus;
  * @package  App\SharedKernel\Application\Bus
  */
 
-interface MessageBus
+interface QueryBus
 {
-      public function dispatch(object $message) : void;
+    public function handle(object $message, array $stamps = []): mixed;
 }
