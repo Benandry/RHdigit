@@ -4,9 +4,13 @@ namespace App\EmployeManagement\Application\UseCase\Command;
 
 use App\EmployeManagement\Domain\Model\Entity\Contrat;
 use App\EmployeManagement\Domain\Model\Entity\Poste;
-use Symfony\Component\Messenger\Attribute\AsMessage;
 
-#[AsMessage('sync')]
+/**
+ * Class AddEmploye
+ * 
+ * @author Eloi Charly <nandry556@gmail.com>
+ * @package App\EmployeManagement\Application\UseCase\Command
+ */
 final class AddEmploye
 {
     /*

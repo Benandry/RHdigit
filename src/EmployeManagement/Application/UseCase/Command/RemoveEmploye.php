@@ -2,9 +2,12 @@
 
 namespace App\EmployeManagement\Application\UseCase\Command;
 
-use Symfony\Component\Messenger\Attribute\AsMessage;
-
-#[AsMessage('sync')]
+/**
+ * Class RemoveEmploye
+ * 
+ * @author Eloi Charly <nandry556@gmail.com>
+ * @package App\EmployeManagement\Application\UseCase\Command
+ */
 final readonly class RemoveEmploye
 {
     /*

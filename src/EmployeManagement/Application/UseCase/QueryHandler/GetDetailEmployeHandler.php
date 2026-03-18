@@ -11,7 +11,8 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 /**
  * Class GetDetailEmployeHandler
  * 
- * @author Eloi Charly <nandry566@gmail.com>
+ * @author Eloi Charly <nandry556@gmail.com>
+ * @package App\EmployeManagement\Application\UseCase\QueryHandler
  */
 
 #[AsMessageHandler('query.bus')]

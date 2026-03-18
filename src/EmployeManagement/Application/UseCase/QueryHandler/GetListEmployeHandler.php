@@ -10,11 +10,12 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 /**
  * Class GetListEmployeHandler
  * 
- * @author Eloi Charly <nandry566@gmail.com>
+ * @author Eloi Charly <nandry556@gmail.com>
+ * @package App\EmployeManagement\Application\UseCase\QueryHandler
  */
 
 #[AsMessageHandler('query.bus')]
-final readonly class GetListEmployeHandler
+final readonly class GetListEmployeHandler 
 {
     use GetEmployeTrait;
     public function __construct(

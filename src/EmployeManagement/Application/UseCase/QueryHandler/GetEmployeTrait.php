@@ -6,13 +6,12 @@ namespace App\EmployeManagement\Application\UseCase\QueryHandler;
 
 use App\EmployeManagement\Application\ReadModel\GetDetailEmployeModel;
 use Doctrine\DBAL\Query\QueryBuilder;
-
 /**
- * trait GetEmployeTrait
+ * Trait GetEmployeTrait
  * 
  * @author Eloi Charly <nandry556@gmail.com>
+ * @package App\EmployeManagement\Application\UseCase\QueryHandler
  */
-
 trait GetEmployeTrait
 {
     public function createBaseQuery(): QueryBuilder

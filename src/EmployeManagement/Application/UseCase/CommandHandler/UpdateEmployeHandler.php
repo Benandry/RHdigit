@@ -6,6 +6,14 @@ use App\EmployeManagement\Application\UseCase\Command\UpdateEmploye;
 use App\EmployeManagement\Domain\Model\Repository\EmployeRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
+/**
+ * Class UpdateEmployeHandler
+ * 
+ * @author Eloi Charly <nandry556@gmail.com>
+ * @package App\EmployeManagement\Application\UseCase\CommandHandler
+ */
+
+
 #[AsMessageHandler('command.bus')]
 final class UpdateEmployeHandler
 {
