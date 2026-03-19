@@ -36,6 +36,14 @@ class Departement
         $this->postes = new ArrayCollection();
     }
 
+    public static function create(string $name, string $description): self
+    {
+        $departement = new self();
+        $departement->name = $name;
+        $departement->description = $description;
+
+        return $departement;
+    }
 
     public function getId(): ?int
     {
@@ -45,13 +53,6 @@ class Departement
     public function getName(): ?string
     {
         return $this->name;
-    }
-
-    public function setName(string $name): static
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     /**
@@ -88,24 +89,9 @@ class Departement
     {
         return $this->description;
     }
-
-    public function setDescription(string $description): static
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeImmutable
@@ -113,12 +99,6 @@ class Departement
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
     #[ORM\PrePersist]
     public function createdAtValue(): void
     {

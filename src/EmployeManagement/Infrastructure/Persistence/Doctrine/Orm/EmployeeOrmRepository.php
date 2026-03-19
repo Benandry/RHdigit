@@ -1,6 +1,6 @@
 <?php
 
-namespace App\EmployeManagement\Infrastructure\Doctrine;
+namespace App\EmployeManagement\Infrastructure\Persistence\Doctrine\Orm;
 
 use App\EmployeManagement\Domain\Exception\NotFoundException;
 use App\EmployeManagement\Domain\Model\Entity\Employee;

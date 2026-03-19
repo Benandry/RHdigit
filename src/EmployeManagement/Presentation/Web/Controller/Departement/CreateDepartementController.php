@@ -2,10 +2,10 @@
 
 namespace App\EmployeManagement\Presentation\Web\Controller\Departement;
 
-use App\EmployeManagement\Domain\Model\Entity\Departement;
+use App\EmployeManagement\Application\Departement\Command\AddDepartement;
 use App\EmployeManagement\Presentation\Web\Form\DepartementType;
+use App\EmployeManagement\Presentation\Web\WriteModel\DepartementModel;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -15,21 +15,23 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/admin/departement/new', name: 'app_departement.create', methods: ['POST', 'GET'])]
 class CreateDepartementController extends AbstractController
 {
-    public function __invoke(Request $request, EntityManagerInterface $entityManager): Response
+    public function __invoke(Request $request): Response
     {
-        $departement = new Departement();
-        $form = $this->createForm(DepartementType::class, $departement);
+        $departementModel = new DepartementModel();
+        $form = $this->createForm(DepartementType::class, $departementModel);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($departement);
-            $entityManager->flush();
+            $this->handleCommand(new AddDepartement(
+                name: $departementModel->name,
+                description: $departementModel->description
+            ));
 
             return $this->redirectToRoute('app_departement.index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('departement/new.html.twig', [
-            'departement' => $departement,
+            'departement' => $departementModel,
             'form' => $form,
         ]);
     }

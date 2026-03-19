@@ -2,7 +2,7 @@
 
 namespace App\EmployeManagement\Presentation\Web\Form;
 
-use App\EmployeManagement\Domain\Model\Entity\Departement;
+use App\EmployeManagement\Presentation\Web\WriteModel\DepartementModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -38,7 +38,7 @@ class DepartementType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Departement::class,
+            'data_class' => DepartementModel::class,
         ]);
     }
 }
