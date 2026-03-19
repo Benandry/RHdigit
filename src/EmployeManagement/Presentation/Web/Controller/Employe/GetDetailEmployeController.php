@@ -2,7 +2,7 @@
 
 namespace App\EmployeManagement\Presentation\Web\Controller\Employe;
 
-use App\EmployeManagement\Application\UseCase\Query\GetDetailEmploye;
+use App\EmployeManagement\Application\Employe\Query\GetDetailEmploye;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;

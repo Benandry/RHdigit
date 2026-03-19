@@ -1,8 +1,10 @@
 <?php
 
-namespace App\EmployeManagement\Application\UseCase\CommandHandler;
+declare(strict_types=1);
 
-use App\EmployeManagement\Application\UseCase\Command\AddEmploye;
+namespace App\EmployeManagement\Application\Employe\CommandHandler;
+
+use App\EmployeManagement\Application\Employe\Command\AddEmploye;
 use App\EmployeManagement\Domain\Model\Entity\Employee;
 use App\EmployeManagement\Domain\Model\Repository\EmployeRepository;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
@@ -11,7 +13,7 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
  * Class AddEmployeHandler
  * 
  * @author Eloi Charly <nandry556@gmail.com>
- * @package App\EmployeManagement\Application\UseCase\CommandHandler
+ * @package App\EmployeManagement\Application\Employe\CommandHandler
  */
 
 

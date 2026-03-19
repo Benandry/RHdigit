@@ -2,7 +2,7 @@
 
 namespace App\EmployeManagement\Presentation\Web\Controller\Employe;
 
-use App\EmployeManagement\Application\UseCase\Command\AddEmploye;
+use App\EmployeManagement\Application\Employe\Command\AddEmploye;
 use App\EmployeManagement\Presentation\Web\Form\EmployeeType;
 use App\EmployeManagement\Presentation\Web\WriteModel\EmployeModel;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;

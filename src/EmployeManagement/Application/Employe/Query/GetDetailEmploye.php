@@ -1,12 +1,13 @@
 <?php
 
-namespace App\EmployeManagement\Application\UseCase\Query;
+declare(strict_types=1);
+namespace App\EmployeManagement\Application\Employe\Query;
 
 /**
  * Class GetDetailEmploye
  * 
  * @author Eloi Charly <nandry556@gmail.com>
- * @package App\EmployeManagement\Application\UseCase\Query
+ * @package App\EmployeManagement\Application\Employe\Query
  */
 
 final readonly class GetDetailEmploye

@@ -1,9 +1,11 @@
 <?php
 
-namespace App\EmployeManagement\Application\UseCase\QueryHandler;
+declare(strict_types=1);
 
-use App\EmployeManagement\Application\ReadModel\GetListEmployeModel;
-use App\EmployeManagement\Application\UseCase\Query\GetListEmploye;
+namespace App\EmployeManagement\Application\Employe\QueryHandler;
+
+use App\EmployeManagement\Application\Employe\Query\GetListEmploye;
+use App\EmployeManagement\Application\Employe\ReadModel\GetListEmployeModel;
 use Doctrine\DBAL\Connection;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
@@ -11,7 +13,7 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
  * Class GetListEmployeHandler
  * 
  * @author Eloi Charly <nandry556@gmail.com>
- * @package App\EmployeManagement\Application\UseCase\QueryHandler
+ * @package App\EmployeManagement\Application\Employe\QueryHandler
  */
 
 #[AsMessageHandler('query.bus')]

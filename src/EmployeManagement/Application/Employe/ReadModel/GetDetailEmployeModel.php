@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\EmployeManagement\Application\ReadModel;
+namespace App\EmployeManagement\Application\Employe\ReadModel;
 
 use DateTimeImmutable;
 

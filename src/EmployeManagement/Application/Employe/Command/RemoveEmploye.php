@@ -1,12 +1,14 @@
 <?php
 
-namespace App\EmployeManagement\Application\UseCase\Command;
+declare(strict_types=1);
+
+namespace App\EmployeManagement\Application\Employe\Command;
 
 /**
  * Class RemoveEmploye
  * 
  * @author Eloi Charly <nandry556@gmail.com>
- * @package App\EmployeManagement\Application\UseCase\Command
+ * @package App\EmployeManagement\Application\Employe\Command
  */
 final readonly class RemoveEmploye
 {

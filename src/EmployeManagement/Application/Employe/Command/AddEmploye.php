@@ -1,16 +1,17 @@
 <?php
 
-namespace App\EmployeManagement\Application\UseCase\Command;
+namespace App\EmployeManagement\Application\Employe\Command;
 
 use App\EmployeManagement\Domain\Model\Entity\Contrat;
 use App\EmployeManagement\Domain\Model\Entity\Poste;
+
 /**
- * Class UpdateEmploye
+ * Class AddEmploye
  * 
  * @author Eloi Charly <nandry556@gmail.com>
- * @package App\EmployeManagement\Application\UseCase\Command
+ * @package App\EmployeManagement\Application\Employe\Command
  */
-final readonly class UpdateEmploye
+final class AddEmploye
 {
     /*
      * Add whatever properties and methods you need
@@ -18,13 +19,12 @@ final readonly class UpdateEmploye
      */
 
     public function __construct(
-        public int $employeId,
-        public string $firstname,
-        public string $lastname,
-        public string $cin,
-        public string $adresse,
-        public string $phoneNumber,
-        public float $salary,
+        public readonly string $firstname,
+        public readonly string $lastname,
+        public readonly string $cin,
+        public readonly string $adresse,
+        public readonly string $phoneNumber,
+        public readonly float $salary,
         public Poste $poste,
         public Contrat $contrat,
         public \DateTimeImmutable $dateOfBirth

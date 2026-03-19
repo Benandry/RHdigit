@@ -2,7 +2,7 @@
 
 namespace App\EmployeManagement\Presentation\Web\Controller\Employe;
 
-use App\EmployeManagement\Application\UseCase\Command\UpdateEmploye;
+use App\EmployeManagement\Application\Employe\Command\UpdateEmploye;
 use App\EmployeManagement\Domain\Model\Entity\Employee;
 use App\EmployeManagement\Presentation\Web\Form\EmployeeType;
 use App\EmployeManagement\Presentation\Web\WriteModel\EmployeModel;
