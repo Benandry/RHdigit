@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\EmployeManagement\Domain\Model\Entity\Employee" table="employee" repository-class="App\EmployeManagement\Infrastructure\Persistence\Doctrine\Orm\EmployeeOrmRepository">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="firstname" type="string" column="firstname" length="255"/>
+        <field name="lastname" type="string" column="lastname" length="255"/>
+        <field name="cin" type="string" column="cin" length="255"/>
+        <field name="adresse" type="string" column="adresse" length="255"/>
+        <field name="phoneNumber" type="string" column="phone_number" length="255" nullable="true"/>
+        <field name="salary" type="float" column="salary"/>
+        <field name="dateOfBirth" type="datetime_immutable" column="date_of_birth"/>
+        <field name="imageName" type="string" column="image_name" length="255" nullable="true"/>
+        <field name="updatedAt" type="datetime_immutable" column="updated_at" nullable="true"/>
+
+        <many-to-one field="poste" target-entity="Poste" inversed-by="employees">
+            <join-column name="poste_id" referenced-column-name="id" nullable="false"/>
+        </many-to-one>
+
+        <many-to-one field="contrat" target-entity="Contrat" inversed-by="employees">
+            <join-column name="contrat_id" referenced-column-name="id" nullable="false"/>
+        </many-to-one>
+
+        <lifecycle-callbacks>
+            <lifecycle-callback type="preUpdate" method="updateDate"/>
+        </lifecycle-callbacks>
+    </entity>
+</doctrine-mapping>

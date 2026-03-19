@@ -18,8 +18,8 @@ doctrine:
 
             EmployeManagement:
                 is_bundle: false
-                type: attribute
-                dir: '%kernel.project_dir%/src/EmployeManagement/Domain/Model/Entity'
+                type: xml
+                dir: '%kernel.project_dir%/src/EmployeManagement/Infrastructure/Persistence/Doctrine/Mapping'
                 prefix: 'App\EmployeManagement\Domain\Model\Entity'
                 alias: EmployeManagement
 

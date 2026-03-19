@@ -26,7 +26,7 @@ final class AddEmployeHandler implements CommandHandler
     }
     public function __invoke(AddEmploye $command): void
     {
-       $employe = Employee::create(
+       $employe = new Employee(
             $command->firstname,
             $command->lastname,
             $command->cin,
@@ -35,7 +35,7 @@ final class AddEmployeHandler implements CommandHandler
             $command->salary,
             $command->poste,
             $command->contrat,
-            $command->dateOfBirth
+            $command->dateOfBirth,
         );
         
         $this->repository->add($employe);

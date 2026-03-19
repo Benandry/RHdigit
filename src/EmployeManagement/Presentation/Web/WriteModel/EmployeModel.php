@@ -36,16 +36,15 @@ final class EmployeModel
     public static function createFromEmployee(Employee $employee): self
     {
         return new self(
-            $employee->getFirstname(),
-            $employee->getLastname(),
-            $employee->getCin(),
-            $employee->getAdresse(),
-            $employee->getPhoneNumber(),
-            $employee->getSalary(),
-            $employee->getPoste(),
-            $employee->getContrat(),
-            $employee->getDateOfBirth(),
-            $employee->getImageFile()
+           firstname: $employee->firstname,
+           lastname: $employee->lastname,
+           cin: $employee->cin,
+           adresse: $employee->adresse,
+           phoneNumber: $employee->phoneNumber,
+           salary: $employee->salary,
+           poste: $employee->poste,
+           contrat: $employee->contrat,
+           dateOfBirth: $employee->dateOfBirth,
         );
     }
     

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity 
+        name="App\EmployeManagement\Domain\Model\Entity\Contrat" 
+        table="contrat" 
+        repository-class="App\EmployeManagement\Infrastructure\Persistence\Doctrine\Orm\ContratOrmRepository"
+    >
+
+        <!-- ID -->
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <!-- Fields -->
+        <field name="name" type="string" length="255" nullable="true"/>
+        <field name="description" type="string" length="255" nullable="true"/>
+
+        <!-- Relation OneToMany -->
+        <one-to-many field="employees"
+                     target-entity="App\EmployeManagement\Domain\Model\Entity\Employee"
+                     mapped-by="contrat"
+                     orphan-removal="true">
+        </one-to-many>
+
+    </entity>
+</doctrine-mapping>

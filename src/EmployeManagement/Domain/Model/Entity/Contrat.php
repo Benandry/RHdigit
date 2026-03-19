@@ -2,32 +2,20 @@
 
 namespace App\EmployeManagement\Domain\Model\Entity;
 
-use App\EmployeManagement\Domain\Model\Entity\Employee;
-use App\Repository\ContratRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
-
-#[ORM\Entity]
 class Contrat
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
     private ?int $id = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $name = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\OneToMany(mappedBy: 'contrat', targetEntity: Employee::class, orphanRemoval: true)]
-    private Collection $employees;
+    /**
+     * @var Employee[]
+     */
+    private array $employees = [];
 
     public function __construct()
     {
-        $this->employees = new ArrayCollection();
+        $this->employees = [];
     }
 
     public function getId(): ?int
@@ -35,15 +23,20 @@ class Contrat
         return $this->id;
     }
 
+    // (optionnel, souvent évité en DDD)
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): static
+    public function setName(string $name): self
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -52,39 +45,35 @@ class Contrat
         return $this->description;
     }
 
-    public function setDescription(string $description): static
+    public function setDescription(string $description): self
     {
         $this->description = $description;
-
         return $this;
     }
 
     /**
-     * @return Collection<int, Employee>
+     * @return Employee[]
      */
-    public function getEmployees(): Collection
+    public function getEmployees(): array
     {
         return $this->employees;
     }
 
-    public function addEmployee(Employee $employee): static
+    public function addEmployee(Employee $employee): self
     {
-        if (!$this->employees->contains($employee)) {
-            $this->employees->add($employee);
-            $employee->setContrat($this);
+        if (!in_array($employee, $this->employees, true)) {
+            $this->employees[] = $employee;
         }
 
         return $this;
     }
 
-    public function removeEmployee(Employee $employee): static
+    public function removeEmployee(Employee $employee): self
     {
-        if ($this->employees->removeElement($employee)) {
-            // set the owning side to null (unless already changed)
-            if ($employee->getContrat() === $this) {
-                $employee->setContrat(null);
-            }
-        }
+        $this->employees = array_filter(
+            $this->employees,
+            fn ($e) => $e !== $employee
+        );
 
         return $this;
     }

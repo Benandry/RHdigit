@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity 
+        name="App\EmployeManagement\Domain\Model\Entity\Poste"
+        table="poste"
+        repository-class="App\EmployeManagement\Infrastructure\Persistence\Doctrine\Orm\PosteOrmRepository"
+    >
+
+        <!-- ID -->
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <!-- Fields -->
+        <field name="name" type="string" length="255" nullable="true"/>
+        <field name="description" type="text" nullable="true"/>
+        <field name="createdAt" type="datetime_immutable"/>
+        <field name="updatedAt" type="datetime_immutable" nullable="true"/>
+
+        <!-- Relation ManyToOne -->
+        <many-to-one field="departement"
+                     target-entity="App\EmployeManagement\Domain\Model\Entity\Departement"
+                     inversed-by="postes">
+            <join-column name="departement_id" referenced-column-name="id" nullable="false"/>
+        </many-to-one>
+
+        <!-- Relation OneToMany -->
+        <one-to-many field="employees"
+                     target-entity="App\EmployeManagement\Domain\Model\Entity\Employee"
+                     mapped-by="poste"
+                     orphan-removal="true">
+        </one-to-many>
+
+        <!-- Lifecycle Callbacks -->
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="prePersist"/>
+            <lifecycle-callback type="preUpdate" method="preUpdate"/>
+        </lifecycle-callbacks>
+
+    </entity>
+</doctrine-mapping>
