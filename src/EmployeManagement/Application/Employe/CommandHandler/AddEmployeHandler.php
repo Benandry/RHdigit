@@ -7,7 +7,7 @@ namespace App\EmployeManagement\Application\Employe\CommandHandler;
 use App\EmployeManagement\Application\Employe\Command\AddEmploye;
 use App\EmployeManagement\Domain\Model\Entity\Employee;
 use App\EmployeManagement\Domain\Model\Repository\EmployeRepository;
-use Symfony\Component\Messenger\Attribute\AsMessageHandler;
+use App\SharedKernel\Application\Command\CommandHandler;
 
 /**
  * Class AddEmployeHandler
@@ -17,8 +17,7 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
  */
 
 
-#[AsMessageHandler('command.bus')]
-final class AddEmployeHandler
+final class AddEmployeHandler implements CommandHandler
 {
     public function __construct(
         private readonly EmployeRepository $repository

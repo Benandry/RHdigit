@@ -2,17 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\EmployeManagement\Application\Employe\QueryHandler;
+namespace App\EmployeManagement\Infrastructure\Persistence\Doctrine\DBAL\Employe\Feature;
 
 use App\EmployeManagement\Application\Employe\ReadModel\GetDetailEmployeModel;
 use Doctrine\DBAL\Query\QueryBuilder;
+
 /**
- * Trait GetEmployeTrait
+ * Trait EmployeQueryTrait
  * 
  * @author Eloi Charly <nandry556@gmail.com>
- * @package App\EmployeManagement\Application\Employe\QueryHandler
+ * @package App\EmployeManagement\Infrastructure\Persistence\Doctrine\DBAL\Employe\Feature
  */
-trait GetEmployeTrait
+trait EmployeQueryTrait
 {
     public function createBaseQuery(): QueryBuilder
     {

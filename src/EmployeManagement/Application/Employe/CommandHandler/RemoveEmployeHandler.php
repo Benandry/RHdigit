@@ -6,6 +6,7 @@ namespace App\EmployeManagement\Application\Employe\CommandHandler;
 
 use App\EmployeManagement\Application\Employe\Command\RemoveEmploye;
 use App\EmployeManagement\Domain\Model\Repository\EmployeRepository;
+use App\SharedKernel\Application\Command\CommandHandler;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 /**
@@ -15,9 +16,7 @@ use Symfony\Component\Messenger\Attribute\AsMessageHandler;
  * @package App\EmployeManagement\Application\Employe\CommandHandler
  */
 
-
-#[AsMessageHandler('command.bus')]
-final class RemoveEmployeHandler
+final class RemoveEmployeHandler implements CommandHandler
 {
     public function __construct(
         private readonly EmployeRepository $repository
