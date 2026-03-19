@@ -67,6 +67,57 @@ class Employee
         $this->leaves = new ArrayCollection();
     }
 
+   public static function create(
+        string $firstname,
+        string $lastname,
+        string $cin,
+        string $adresse,
+        ?string $phoneNumber,
+        float $salary,
+        Poste $poste,
+        Contrat $contrat,
+        \DateTimeImmutable $dateOfBirth
+    ): self {
+        $employee = new self();
+        $employee->firstname = $firstname;
+        $employee->lastname = $lastname;
+        $employee->cin = $cin;
+        $employee->adresse = $adresse;
+        $employee->phoneNumber = $phoneNumber;
+        $employee->salary = $salary;
+        $employee->poste = $poste;
+        $employee->contrat = $contrat;
+        $employee->dateOfBirth = $dateOfBirth;
+
+        $employee->updatedAt = new \DateTimeImmutable();
+
+        return $employee;
+    }
+
+    public function updateProfile(
+        string $firstname,
+        string $lastname,
+        string $cin,
+        string $adresse,
+        ?string $phoneNumber,
+        float $salary,
+        Poste $poste,
+        Contrat $contrat,
+        \DateTimeImmutable $dateOfBirth
+    ): void {
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->cin = $cin;
+        $this->adresse = $adresse;
+        $this->phoneNumber = $phoneNumber;
+        $this->salary = $salary;
+        $this->poste = $poste;
+        $this->contrat = $contrat;
+        $this->dateOfBirth = $dateOfBirth;
+
+        $this->updatedAt = new \DateTimeImmutable();
+    }
+
 
     public function getId(): ?int
     {
@@ -78,23 +129,10 @@ class Employee
         return $this->firstname;
     }
 
-    public function setFirstname(string $firstname): static
-    {
-        $this->firstname = $firstname;
-
-        return $this;
-    }
 
     public function getLastname(): ?string
     {
         return $this->lastname;
-    }
-
-    public function setLastname(string $lastname): static
-    {
-        $this->lastname = $lastname;
-
-        return $this;
     }
 
     public function getCin(): ?string
@@ -102,47 +140,21 @@ class Employee
         return $this->cin;
     }
 
-    public function setCin(string $cin): static
-    {
-        $this->cin = $cin;
-
-        return $this;
-    }
-
     public function getAdresse(): ?string
     {
         return $this->adresse;
     }
 
-    public function setAdresse(string $adresse): static
-    {
-        $this->adresse = $adresse;
-
-        return $this;
-    }
 
     public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(?string $phoneNumber): static
-    {
-        $this->phoneNumber = $phoneNumber;
-
-        return $this;
-    }
 
     public function getSalary(): ?float
     {
         return $this->salary;
-    }
-
-    public function setSalary(float $salary): static
-    {
-        $this->salary = $salary;
-
-        return $this;
     }
 
     public function getPoste(): ?Poste
@@ -150,23 +162,10 @@ class Employee
         return $this->poste;
     }
 
-    public function setPoste(?Poste $poste): static
-    {
-        $this->poste = $poste;
-
-        return $this;
-    }
 
     public function getContrat(): ?Contrat
     {
         return $this->contrat;
-    }
-
-    public function setContrat(?Contrat $contrat): static
-    {
-        $this->contrat = $contrat;
-
-        return $this;
     }
 
     public function getDateOfBirth(): ?\DateTimeImmutable
@@ -174,29 +173,10 @@ class Employee
         return $this->dateOfBirth;
     }
 
-    public function setDateOfBirth(\DateTimeImmutable $dateOfBirth): static
-    {
-        $this->dateOfBirth = $dateOfBirth;
-
-        return $this;
-    }
-
-    public function setImageName(?string $imageName): void
-    {
-        $this->imageName = $imageName;
-    }
-
     public function getImageName(): ?string
     {
         return $this->imageName;
     }
-
-    public function setImageFile(?File $imageFile = null): static
-    {
-        $this->imageFile = $imageFile;
-        return $this;
-    }
-
 
     public function getImageFile(): ?File
     {
@@ -206,13 +186,6 @@ class Employee
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): static
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
     }
 
     #[ORM\PreUpdate]
@@ -250,4 +223,7 @@ class Employee
 
         return $this;
     }
+
+
+
 }

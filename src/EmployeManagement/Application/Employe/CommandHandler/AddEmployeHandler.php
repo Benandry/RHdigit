@@ -24,21 +24,20 @@ final class AddEmployeHandler implements CommandHandler
     )
     {
     }
-    public function __invoke(AddEmploye $message): void
+    public function __invoke(AddEmploye $command): void
     {
-       $employe = new Employee();
-
-       $employe->setFirstname($message->firstname)
-            ->setLastname($message->lastname)
-            ->setCin($message->cin)
-            ->setAdresse($message->adresse)
-            ->setSalary($message->salary)
-            ->setPhoneNumber($message->phoneNumber)
-            ->setPoste($message->poste)
-            ->setContrat($message->contrat)
-            ->setDateOfBirth($message->dateOfBirth)
-        ;
-
+       $employe = Employee::create(
+            $command->firstname,
+            $command->lastname,
+            $command->cin,
+            $command->adresse,
+            $command->phoneNumber,
+            $command->salary,
+            $command->poste,
+            $command->contrat,
+            $command->dateOfBirth
+        );
+        
         $this->repository->add($employe);
     }
 }

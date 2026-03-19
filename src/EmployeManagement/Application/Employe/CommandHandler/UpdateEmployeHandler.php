@@ -27,16 +27,17 @@ final class UpdateEmployeHandler implements CommandHandler
     {
         $employe = $this->repository->getById($command->employeId);
          
-        $employe->setFirstname($command->firstname)
-                ->setLastname($command->lastname)
-                ->setCin($command->cin)
-                ->setAdresse($command->adresse)
-                ->setSalary($command->salary)
-                ->setPhoneNumber($command->phoneNumber)
-                ->setPoste($command->poste)
-                ->setContrat($command->contrat)
-                ->setDateOfBirth($command->dateOfBirth)
-            ;
+        $employe->updateProfile(
+            $command->firstname,
+            $command->lastname,
+            $command->cin,
+            $command->adresse,
+            $command->phoneNumber,
+            $command->salary,
+            $command->poste,
+            $command->contrat,
+            $command->dateOfBirth
+        );
 
         $this->repository->add($employe);
     }
