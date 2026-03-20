@@ -29,6 +29,15 @@ class Departement
         return $departement;
     }
 
+
+    public function update(string $name, string $description): self
+    {
+        $this->name = $name;
+        $this->description = $description;
+
+        return $this;
+    }
+
     // -----------------------
     // Gestion des Postes
     // -----------------------

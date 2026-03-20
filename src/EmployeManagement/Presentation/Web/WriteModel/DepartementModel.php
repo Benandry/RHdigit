@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\EmployeManagement\Presentation\Web\WriteModel;
 
+use App\EmployeManagement\Domain\Model\Entity\Departement;
+
 /**
  * Class DepartementModel
  * 
@@ -18,5 +20,13 @@ final class DepartementModel
         public ?string $description = null
     )
     {
+    }
+
+    public static function createModelFromEntity(Departement $departement): self
+    {
+        return new self(
+            $departement->name,
+            $departement->description
+        );
     }
 }
