@@ -2,7 +2,7 @@
 
 namespace App\EmployeManagement\Presentation\Web\Controller\Departement;
 
-use App\EmployeManagement\Domain\Model\Entity\Departement;
+use App\EmployeManagement\Application\Departement\Query\GetDetailDepartement;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -13,8 +13,10 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/admin/departement/{id}', name: 'app_departement.show', methods: ['GET'], requirements: [ 'id' => Requirement::DIGITS ])]
 class GetDetailDepartementController extends AbstractController
 {
-    public function __invoke(Departement $departement): Response
+    public function __invoke(int $id): Response
     {
+        $departement = $this->handleQuery(new GetDetailDepartement($id));
+        
         return $this->render('departement/show.html.twig', [
             'departement' => $departement,
         ]);
