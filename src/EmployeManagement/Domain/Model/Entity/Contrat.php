@@ -2,20 +2,19 @@
 
 namespace App\EmployeManagement\Domain\Model\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class Contrat
 {
     private ?int $id = null;
     private ?string $name = null;
     private ?string $description = null;
-
-    /**
-     * @var Employee[]
-     */
-    private array $employees = [];
+    private Collection $employees ;
 
     public function __construct()
     {
-        $this->employees = [];
+        $this->employees = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -51,29 +50,24 @@ class Contrat
         return $this;
     }
 
-    /**
-     * @return Employee[]
-     */
-    public function getEmployees(): array
-    {
-        return $this->employees;
-    }
 
     public function addEmployee(Employee $employee): self
     {
-        if (!in_array($employee, $this->employees, true)) {
-            $this->employees[] = $employee;
+       if (!$this->employees->contains($employee)) {
+            $this->employees->add($employee);
+            $employee->contrat = $this;
         }
 
         return $this;
     }
 
     public function removeEmployee(Employee $employee): self
-    {
-        $this->employees = array_filter(
-            $this->employees,
-            fn ($e) => $e !== $employee
-        );
+    {  
+        if ($this->employees->removeElement($employee)) {
+            if ($employee->contrat === $this) {
+                $employee->contrat = null;
+            }
+        }
 
         return $this;
     }

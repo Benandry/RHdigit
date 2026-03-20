@@ -2,18 +2,23 @@
 
 namespace App\EmployeManagement\Domain\Model\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class Departement
 {
     public ?int $id = null;
     public ?string $name = null;
     public ?string $description = null;
-    public array $postes = [];
+    public Collection $postes;
     public ?\DateTimeImmutable $createdAt = null;
     public ?\DateTimeImmutable $updatedAt = null;
 
-    /**
-     * Crée un nouveau Departement
-     */
+    public function __construct()
+    {
+        $this->postes = new ArrayCollection();
+    }
+
     public static function create(string $name, string $description): self
     {
         $departement = new self();
@@ -29,8 +34,8 @@ class Departement
     // -----------------------
     public function addPoste(Poste $poste): self
     {
-        if (!in_array($poste, $this->postes, true)) {
-            $this->postes[] = $poste;
+        if (!$this->postes->contains($poste)) {
+            $this->postes->add($poste);
             $poste->departement = $this;
         }
 
@@ -39,13 +44,10 @@ class Departement
 
     public function removePoste(Poste $poste): self
     {
-        $this->postes = array_filter(
-            $this->postes,
-            fn($p) => $p !== $poste
-        );
-
-        if ($poste->departement === $this) {
-            $poste->departement = null;
+        if ($this->postes->removeElement($poste)) {
+            if ($poste->departement === $this) {
+                $poste->departement = null;
+            }
         }
 
         return $this;

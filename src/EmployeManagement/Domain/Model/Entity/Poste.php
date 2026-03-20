@@ -2,6 +2,9 @@
 
 namespace App\EmployeManagement\Domain\Model\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class Poste
 {
     public ?int $id = null;
@@ -11,12 +14,14 @@ class Poste
     public ?\DateTimeImmutable $createdAt = null;
     public ?\DateTimeImmutable $updatedAt = null;
 
-    /** @var Employee[] */
-    public array $employees = [];
+    /** @var Collection<int, Employee> */
+      public Collection $employees;
 
-    /**
-     * Crée un nouveau poste
-     */
+    public function __construct()
+    {
+        $this->employees = new ArrayCollection();
+    }
+
     public static function create(string $name, ?Departement $departement = null, ?string $description = null): self
     {
         $poste = new self();
@@ -24,8 +29,6 @@ class Poste
         $poste->departement = $departement;
         $poste->description = $description;
         $poste->createdAt = new \DateTimeImmutable();
-
-        // Si un département est fourni, on l'ajoute automatiquement
         if ($departement !== null) {
             $departement->addPoste($poste);
         }
@@ -38,8 +41,8 @@ class Poste
     // -----------------------
     public function addEmployee(Employee $employee): self
     {
-        if (!in_array($employee, $this->employees, true)) {
-            $this->employees[] = $employee;
+       if (!$this->employees->contains($employee)) {
+            $this->employees->add($employee);
             $employee->poste = $this;
         }
 
@@ -48,13 +51,10 @@ class Poste
 
     public function removeEmployee(Employee $employee): self
     {
-        $this->employees = array_filter(
-            $this->employees,
-            fn($e) => $e !== $employee
-        );
-
-        if ($employee->poste === $this) {
-            $employee->poste = null;
+        if ($this->employees->removeElement($employee)) {
+            if ($employee->poste === $this) {
+                $employee->poste = null;
+            }
         }
 
         return $this;
@@ -67,5 +67,11 @@ class Poste
     {
         $this->updatedAt = new \DateTimeImmutable();
         return $this;
+    }
+
+    public function markCreated(): void
+    {
+         $this->createdAt = new \DateTimeImmutable();
+         $this->updatedAt = new \DateTimeImmutable();
     }
 }

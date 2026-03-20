@@ -13,8 +13,8 @@ class Employee
     public string $adresse;
     public ?string $phoneNumber;
     public float $salary;
-    public Poste $poste;
-    public Contrat $contrat;
+    public ?Poste $poste;
+    public ?Contrat $contrat;
     public \DateTimeImmutable $dateOfBirth;
     public ?string $imageName;
 
