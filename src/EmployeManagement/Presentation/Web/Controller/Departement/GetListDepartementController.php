@@ -2,6 +2,7 @@
 
 namespace App\EmployeManagement\Presentation\Web\Controller\Departement;
 
+use App\EmployeManagement\Application\Departement\Query\GetListDepartement;
 use App\EmployeManagement\Infrastructure\Persistence\Doctrine\Orm\DepartementOrmRepository;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,10 +13,10 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/admin/departement/index', name: 'app_departement.index', methods: ['POST','GET'])]
 class GetListDepartementController extends AbstractController
 {
-    public function __invoke(DepartementOrmRepository $departementRepository): Response
+    public function __invoke(): Response
     {
         return $this->render('departement/index.html.twig', [
-            'departements' => $departementRepository->findAll(),
+            'departements' => $this->handleQuery(new GetListDepartement())->items,
         ]);
     }
 }

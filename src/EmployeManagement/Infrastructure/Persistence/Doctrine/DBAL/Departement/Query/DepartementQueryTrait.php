@@ -30,7 +30,7 @@ trait DepartementQueryTrait
     public function mapDataToGetDepartmentDetail(array $data): GetDetailDepartementModel
     {
         return new GetDetailDepartementModel(
-            departementId: $data['id'],
+            id: $data['id'],
             name: $data['name'],
             description: $data['description'],
             createdAt: isset($data['created_at']) ? new \DateTimeImmutable($data['created_at']) : null,

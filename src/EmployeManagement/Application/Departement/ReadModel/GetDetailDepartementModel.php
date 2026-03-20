@@ -14,11 +14,11 @@ namespace App\EmployeManagement\Application\Departement\ReadModel;
 final readonly class GetDetailDepartementModel
 {
     public function __construct(
-        public int $departementId,
+        public int $id,
         public string $name,
         public string $description,
-        public \DateTimeImmutable $createdAt,
-        public \DateTimeImmutable $updatedAt,
+        public ?\DateTimeImmutable $createdAt,
+        public ?\DateTimeImmutable $updatedAt,
     )
     {
     }
