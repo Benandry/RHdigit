@@ -24,8 +24,7 @@ class Departement
         $departement = new self();
         $departement->name = $name;
         $departement->description = $description;
-        $departement->createdAt = new \DateTimeImmutable();
-
+        
         return $departement;
     }
 
@@ -69,5 +68,11 @@ class Departement
     {
         $this->updatedAt = new \DateTimeImmutable();
         return $this;
+    }
+
+    public function markCreated(): void
+    {
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
     }
 }
