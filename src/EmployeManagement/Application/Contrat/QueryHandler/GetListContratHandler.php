@@ -12,7 +12,7 @@ use App\SharedKernel\Application\Query\QueryHandler;
  * interface GetListContratHandler
  * 
  * @author Eloi Charly <nandry556@gmail.com>
- * @package App\EmployeManagement\Application\Departement\QueryHandler
+ * @package App\EmployeManagement\Application\Contrat\QueryHandler
  */
 
 interface GetListContratHandler extends QueryHandler

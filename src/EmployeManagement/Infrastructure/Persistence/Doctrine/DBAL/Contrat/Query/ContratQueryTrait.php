@@ -25,7 +25,7 @@ trait ContratQueryTrait
         ->from('contrat', 'd');
     }
     
-    public function mapDataToGetDepartmentDetail(array $data): GetDetailContratModel
+    public function mapDataToGetContratDetail(array $data): GetDetailContratModel
     {
         return new GetDetailContratModel(
             id: $data['id'],

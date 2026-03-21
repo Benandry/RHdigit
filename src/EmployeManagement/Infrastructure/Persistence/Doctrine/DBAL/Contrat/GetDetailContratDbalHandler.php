@@ -38,6 +38,6 @@ final readonly class GetDetailContratDbalHandler implements GetDetailContratHand
             throw NotFoundException::withId($query->contratId);
         }
         
-        return $this->mapDataToGetDepartmentDetail($data);
+        return $this->mapDataToGetContratDetail($data);
     }
 }

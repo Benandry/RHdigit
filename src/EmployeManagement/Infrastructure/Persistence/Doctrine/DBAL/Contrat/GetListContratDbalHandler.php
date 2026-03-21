@@ -32,7 +32,7 @@ final readonly class GetListContratDbalHandler implements GetListContratHandler
         
         return new GetListContratModel(
             array_map(
-                $this->mapDataToGetDepartmentDetail(...),
+                $this->mapDataToGetContratDetail(...),
                 $data
             )
         );
