@@ -18,11 +18,11 @@ trait ContratQueryTrait
     public function createBaseQuery(): QueryBuilder
     {
         return $this->connection->createQueryBuilder()
-            ->select('d.id', 
-            'd.name', 
-            'd.description'
+            ->select('c.id', 
+            'c.name', 
+            'c.description'
         )
-        ->from('contrat', 'd');
+        ->from('contrat', 'c');
     }
     
     public function mapDataToGetContratDetail(array $data): GetDetailContratModel

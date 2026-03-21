@@ -36,6 +36,13 @@ class Poste
         return $poste;
     }
 
+    public function update(string $name, ?Departement $departement = null, ?string $description = null): void
+    {
+        $this->name = $name;
+        $this->departement = $departement;
+        $this->description = $description;
+    }
+
     // -----------------------
     // Gestion des employés
     // -----------------------

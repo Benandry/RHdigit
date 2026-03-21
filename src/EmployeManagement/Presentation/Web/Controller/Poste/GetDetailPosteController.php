@@ -2,7 +2,8 @@
 
 namespace App\EmployeManagement\Presentation\Web\Controller\Poste;
 
-use App\EmployeManagement\Domain\Model\Entity\Poste;
+use App\EmployeManagement\Application\Poste\Query\GetDetailPoste;
+use App\EmployeManagement\Application\Poste\ReadModel\GetDetailPosteModel;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -13,8 +14,14 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/admin/poste/{id}', name: 'app_poste.show', methods: ["GET"], requirements: [ 'id' => Requirement::DIGITS ])]
 class GetDetailPosteController extends AbstractController
 {
-   public function __invoke(Poste $poste): Response
+   public function __invoke(int $id): Response
     {
+        
+        /**
+         * @var GetDetailPosteModel $data
+         */
+        $poste = $this->handleQuery(new GetDetailPoste($id));
+        
         return $this->render('poste/index.html.twig', [
             'poste' => $poste,
         ]);

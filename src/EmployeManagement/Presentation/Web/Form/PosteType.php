@@ -3,7 +3,7 @@
 namespace App\EmployeManagement\Presentation\Web\Form;
 
 use App\EmployeManagement\Domain\Model\Entity\Departement;
-use App\EmployeManagement\Domain\Model\Entity\Poste;
+use App\EmployeManagement\Presentation\Web\WriteModel\PosteModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -53,7 +53,7 @@ class PosteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Poste::class,
+            'data_class' => PosteModel::class,
         ]);
     }
 }
