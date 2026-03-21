@@ -2,7 +2,7 @@
 
 namespace App\EmployeManagement\Presentation\Web\Controller\Contrat;
 
-use App\EmployeManagement\Domain\Model\Entity\Contrat;
+use App\EmployeManagement\Application\Contrat\Query\GetDetailContrat;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -13,10 +13,10 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted('IS_AUTHENTICATED_FULLY')]
 class GetDetailContratController extends AbstractController
 {
-      public function __invoke(Contrat $contrat): Response
+    public function __invoke(int $id): Response
     {
         return $this->render('contrat/show.html.twig', [
-            'contrat' => $contrat,
+            'contrat' => $this->handleQuery(new GetDetailContrat($id)),
         ]);
     }
 
