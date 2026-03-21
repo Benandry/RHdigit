@@ -2,7 +2,7 @@
 
 namespace App\EmployeManagement\Presentation\Web\Form;
 
-use App\EmployeManagement\Domain\Model\Entity\Contrat;
+use App\EmployeManagement\Presentation\Web\WriteModel\ContratModel;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -40,7 +40,7 @@ class ContratType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Contrat::class,
+            'data_class' => ContratModel::class,
         ]);
     }
 }

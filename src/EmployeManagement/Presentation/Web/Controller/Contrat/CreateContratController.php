@@ -2,8 +2,9 @@
 
 namespace App\EmployeManagement\Presentation\Web\Controller\Contrat;
 
-use App\EmployeManagement\Domain\Model\Entity\Contrat;
+use App\EmployeManagement\Application\Contrat\Command\AddContrat;
 use App\EmployeManagement\Presentation\Web\Form\ContratType;
+use App\EmployeManagement\Presentation\Web\WriteModel\ContratModel;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,21 +16,25 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted('IS_AUTHENTICATED_FULLY')]
 class CreateContratController extends AbstractController
 {
-    public function __invoke(Request $request, EntityManagerInterface $entityManager): Response
+    public function __invoke(Request $request): Response
     {
-        $contrat = new Contrat();
-        $form = $this->createForm(ContratType::class, $contrat);
+        $contratModel = new ContratModel();
+        $form = $this->createForm(ContratType::class, $contratModel);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($contrat);
-            $entityManager->flush();
+           $this->handleCommand(new AddContrat(
+                $contratModel->name,
+                $contratModel->description
+           ));
+
+           $this->addFlash('success', 'Contrat créé avec success');
 
             return $this->redirectToRoute('app_contrat.index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('contrat/new.html.twig', [
-            'contrat' => $contrat,
+            'contrat' => $contratModel,
             'form' => $form,
         ]);
     }

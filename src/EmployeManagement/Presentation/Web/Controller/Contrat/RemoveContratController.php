@@ -2,9 +2,8 @@
 
 namespace App\EmployeManagement\Presentation\Web\Controller\Contrat;
 
-use App\EmployeManagement\Domain\Model\Entity\Contrat;
+use App\EmployeManagement\Application\Contrat\Command\RemoveContrat;
 use App\SharedKernel\Presentation\Web\Controller\AbstractController;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -15,13 +14,14 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[IsGranted('IS_AUTHENTICATED_FULLY')]
 class RemoveContratController extends AbstractController
 {
-    public function __invoke(Request $request, Contrat $contrat, EntityManagerInterface $entityManager): Response
+    public function __invoke(Request $request, int $id): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $contrat->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($contrat);
-            $entityManager->flush();
+        if ($this->isCsrfTokenValid('delete' . $id, $request->request->get('_token'))) {
+             $this->handleCommand(new RemoveContrat($id));
         }
-
+                    
+        $this->addFlash('success', 'Suppression de contrat avec success');
+        
         return $this->redirectToRoute('app_contrat.index', [], Response::HTTP_SEE_OTHER);
     }
 }
