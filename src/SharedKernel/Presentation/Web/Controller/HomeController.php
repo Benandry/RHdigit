@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Controller;
+declare(strict_types=1);
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+namespace App\SharedKernel\Presentation\Web\Controller;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;

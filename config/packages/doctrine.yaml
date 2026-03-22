@@ -10,18 +10,26 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            App:
-                is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
-
             EmployeManagement:
                 is_bundle: false
                 type: xml
                 dir: '%kernel.project_dir%/src/EmployeManagement/Infrastructure/Persistence/Doctrine/Mapping'
                 prefix: 'App\EmployeManagement\Domain\Model\Entity'
                 alias: EmployeManagement
+
+            LeaveManagement:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/LeaveManagement/Infrastructure/Persistence/Doctrine/Mapping'
+                prefix: 'App\LeaveManagement\Domain\Model\Entity'
+                alias: LeaveManagement
+
+            AccessIdentity:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/AccessIdentity/Infrastructure/Persistence/Doctrine/Mapping'
+                prefix: 'App\AccessIdentity\Domain\Model\Entity'
+                alias: AccessIdentity
 
 when@test:
     doctrine:

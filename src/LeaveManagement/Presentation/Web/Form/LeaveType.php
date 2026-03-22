@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Form;
+namespace App\LeaveManagement\Presentation\Web\Form;
 
 use App\EmployeManagement\Domain\Model\Entity\Employee;
-use App\Entity\Leave;
+use App\LeaveManagement\Presentation\Web\WriteModel\LeaveModel;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -85,7 +85,7 @@ class LeaveType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Leave::class,
+            'data_class' => LeaveModel::class,
         ]);
     }
 }

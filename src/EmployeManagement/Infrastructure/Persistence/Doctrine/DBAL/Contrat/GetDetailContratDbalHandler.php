@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\EmployeManagement\Infrastructure\Persistence\Doctrine\DBAL\Departement;
+namespace App\EmployeManagement\Infrastructure\Persistence\Doctrine\DBAL\Contrat;
 
 use App\EmployeManagement\Application\Contrat\Query\GetDetailContrat;
 use App\EmployeManagement\Application\Contrat\QueryHandler\GetDetailContratHandler;
@@ -15,7 +15,7 @@ use Doctrine\DBAL\Connection;
  * Class GetDetailContratDbalHandler
  * 
  * @author Eloi Charly <nandry556@gmail.com>
- * @package App\EmployeManagement\Infrastructure\Persistence\Doctrine\DBAL\Departement
+ * @package App\EmployeManagement\Infrastructure\Persistence\Doctrine\DBAL\Contrat
  */
 
 final readonly class GetDetailContratDbalHandler implements GetDetailContratHandler
