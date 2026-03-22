@@ -1,22 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tableau de bord - {{ parent() }}
-{% endblock %}
+{% block title %}Tableau de bord - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <div class="p-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-            {{ include("utils/_widget.html.twig", { total: 100, subtitle: "Nombre total de employés", title: "Employés", icon: "fas fa-users" }) }}
-            {{ include("utils/_widget.html.twig", { total: 12, subtitle: "Département dans le société", title: "Départements", icon: "fas fa-building" }) }}
-            {{ include("utils/_widget.html.twig", { total: 100, subtitle: "Nombre total de postes", title: "Postes", icon: "fas fa-briefcase" }) }}
-        </div>
+<div class="p-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {{ include("utils/_widget.html.twig", { total: 100, subtitle: "Nombre total de employés", title: "Employés", icon: "fas fa-users" }) }}
+        {{ include("utils/_widget.html.twig", { total: 12, subtitle: "Département dans le société", title: "Départements", icon: "fas fa-building" }) }}
+        {{ include("utils/_widget.html.twig", { total: 100, subtitle: "Nombre total de postes", title: "Postes", icon: "fas fa-briefcase" }) }}
+    </div>
 
-        <!-- Chart Section -->
-        <div class="mt-8 p-4 bg-white shadow rounded-lg">
-            <h2 class="text-lg font-semibold mb-4">Statistiques des employés</h2>
-            <div class="w-full md:w-2/3 lg:w-1/2 mx-auto">
-                {{ render_chart(chart) }}
+    <!-- Chart Section -->
+    <div class="mt-8 p-4 bg-white shadow rounded-lg">
+        <h2 class="text-lg font-semibold mb-4">Statistiques des employés</h2>
+        
+         <!-- Pie et Doughnut -->
+        <div class="flex flex-col mt-11 md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center">
+            <div class="flex-1 min-w-0 max-w-lg mx-auto">
+                {{ render_chart(chart3) }}
+            </div>
+            <div class="flex-1 min-w-0 max-w-lg mx-auto">
+                {{ render_chart(chart4) }}
             </div>
         </div>
+
+        <div class="flex mt-16 flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-start">
+            <div class="flex-1 min-w-0">
+                {{ render_chart(chart) }}
+            </div>
+            <div class="flex-1 min-w-0">
+                {{ render_chart(chart2) }}
+            </div>
+        </div>
+
+        
     </div>
+</div>
 {% endblock %}
