@@ -24,7 +24,7 @@ class UpdateEmployeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->handleCommand(new UpdateEmploye(
-                $employee->getId(),
+                $employee->id,
                 $employeModel->firstname,
                 $employeModel->lastname,
                 $employeModel->cin,

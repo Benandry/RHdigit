@@ -17,23 +17,15 @@
          <!-- Pie et Doughnut -->
         <div class="flex flex-col mt-11 md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center">
             <div class="flex-1 min-w-0 max-w-lg mx-auto">
-                {{ render_chart(chart3) }}
+                {{ render_chart(chartPoste) }}
             </div>
             <div class="flex-1 min-w-0 max-w-lg mx-auto">
-                {{ render_chart(chart4) }}
+                {{ render_chart(chartContrat) }}
+            </div>
+             <div class="flex-1 min-w-0 max-w-lg mx-auto">
+                {{ render_chart(chartDepartement) }}
             </div>
         </div>
-
-        <div class="flex mt-16 flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-start">
-            <div class="flex-1 min-w-0">
-                {{ render_chart(chart) }}
-            </div>
-            <div class="flex-1 min-w-0">
-                {{ render_chart(chart2) }}
-            </div>
-        </div>
-
-        
     </div>
 </div>
 {% endblock %}

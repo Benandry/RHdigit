@@ -5,7 +5,7 @@ namespace App\EmployeManagement\Domain\Model\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-final class  Contrat
+class  Contrat
 {
     public ?int $id = null;
     public Collection $employees ;
