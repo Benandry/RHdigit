@@ -6,19 +6,70 @@
     </div>
 
     {% set current_path = app.request.get('_route') %}
-    {% set rh_items = {
-        'app_employee.index': ['Employés', 'fas fa-user'],
-        'app_departement.index': ['Département', 'fas fa-building'],
-        'app_contrat.index': ['Contrat', 'fas fa-file-contract'],
-        'app_poste.index': ['Poste', 'fas fa-briefcase']
+
+    {# Définition des menus principaux avec sous-menus #}
+    {% set menus = {
+        'Ressources humaines': {
+            'icon': 'fas fa-layer-group',
+            'items': {
+                'app_employee.index': ['Employés', 'fas fa-user'],
+                'app_departement.index': ['Département', 'fas fa-building'],
+                'app_contrat.index': ['Contrat', 'fas fa-file-contract'],
+                'app_poste.index': ['Poste', 'fas fa-briefcase']
+            }
+        },
+        'Achats': {
+            'icon': 'fas fa-shopping-cart',
+            'items': {
+                'inactive_orders': ['Commandes', 'fas fa-receipt'],
+                'inactive_suppliers': ['Fournisseurs', 'fas fa-truck']
+            }
+        },
+        'Finance et Comptabilité': {
+            'icon': 'fas fa-chart-line',
+            'items': {
+                'inactive_compta': ['Comptabilité', 'fas fa-receipt'],
+                'inactive_tresorerie': ['Trésorerie', 'fas fa-wallet'],
+                'inactive_budget': ['Budget', 'fas fa-piggy-bank']
+            }
+        },
+        'CRM': {
+            'icon': 'fas fa-handshake',
+            'items': {
+                'inactive_clients': ['Clients', 'fas fa-user-friends'],
+                'inactive_deals': ['Affaires', 'fas fa-briefcase']
+            }
+        },
+        'Projet et BI': {
+            'icon': 'fas fa-project-diagram',
+            'items': {
+                'inactive_projects': ['Gestion de projets', 'fas fa-tasks'],
+                'inactive_bi': ['Business Intelligence', 'fas fa-chart-bar'],
+                'inactive_reporting': ['Rapports et Exports', 'fas fa-file-alt']
+            }
+        },
+        'Production et Logistique': {
+            'icon': 'fas fa-industry',
+            'items': {
+                'inactive_production': ['Production', 'fas fa-cogs'],
+                'inactive_logistics': ['Stock et Entrepôt', 'fas fa-warehouse'],
+                'inactive_transport': ['Transports et Livraisons', 'fas fa-truck']
+            }
+        },
+        'Administration': {
+            'icon': 'fas fa-cogs',
+            'items': {
+                'inactive_users': ['Utilisateurs & Rôles', 'fas fa-user-shield'],
+                'inactive_settings': ['Paramètres système', 'fas fa-cogs'],
+                'inactive_audit': ['Journal d\'audit', 'fas fa-file-alt'],
+                'inactive_api': ['Intégrations & API', 'fas fa-plug']
+            }
+        }
     } %}
-    {% set rh_routes = rh_items|keys %}
 
-    <nav class="mt-6 px-4" x-data="{ 
-            openRH: {{ current_path in rh_routes ? 'true' : 'false' }} 
-        }">
+    <nav class="mt-6 px-4" x-data="{ openMenu: '{{ menus|keys|first }}' }">
         <div class="space-y-2">
-
+            
             <!-- Dashboard -->
             <a href="{{ path('app_home') }}"
                class="flex items-center gap-3 px-4 py-3 {{ current_path == 'app_home' ? 'bg-blue-900/30 text-blue-300' : 'text-gray-300'}} rounded-lg hover:bg-gray-800/30 hover:text-white transition">
@@ -26,48 +77,52 @@
                 <span class="font-medium truncate">Tableau de bord</span>
             </a>
 
-            <!-- Groupe RH -->
-            <div>
-                <button 
-                    @click="openRH = !openRH"
-                    class="w-full flex items-center justify-between px-4 py-3 text-gray-300 hover:bg-gray-800/30 hover:text-white rounded-lg transition">
-                    
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-layer-group h-5 w-5"></i>
-                        <span class="font-medium truncate" title="Ressources humaines">Ressources humaines</span>
-                    </div>
-
-                    <i class="fas fa-chevron-down inline-block"
-                        :style="openRH ? 'transform: rotate(0deg); transition: transform 0.3s ease-in-out;' : 'transform: rotate(-90deg); transition: transform 0.3s ease-in-out;'"></i>
-                </button>
-
-                <!-- Dropdown -->
-                <div x-show="openRH"
-                     x-transition:enter="transition ease-out duration-300"
-                     x-transition:enter-start="opacity-0 scale-y-90 max-h-0"
-                     x-transition:enter-end="opacity-100 scale-y-100 max-h-96"
-                     x-transition:leave="transition ease-in duration-200"
-                     x-transition:leave-start="opacity-100 scale-y-100 max-h-96"
-                     x-transition:leave-end="opacity-0 scale-y-90 max-h-0"
-                     class="overflow-hidden pl-10 mt-2 space-y-1">
-
-                    {% for route, data in rh_items %}
-                        <a href="{{ path(route) }}"
-                           class="flex items-center gap-2 px-4 py-2 rounded-lg text-lg {{ current_path starts with route|split('.')|first ~ '.' ? 'bg-blue-900/30 text-blue-300' : 'text-gray-400'}} hover:bg-gray-800/30 hover:text-white transition truncate"
-                           title="{{ data[0] }}">
-                            <i class="{{ data[1] }} w-4 h-4"></i>
-                            <span>{{ data[0] }}</span>
-                        </a>
-                    {% endfor %}
-                </div>
-            </div> 
-
-            <!-- Congé -->
-            <a href="{{ path('app_leave.index') }}"
-               class="flex items-center gap-3 px-4 py-3 {{ current_path starts with 'app_leave.' ? 'bg-blue-900/30 text-blue-300' : 'text-gray-300'}} hover:bg-gray-800/30 hover:text-white rounded-lg transition truncate">
-                <i class="fas fa-calendar-check h-5 w-5"></i>
-                <span class="font-medium">Gestion de congé</span>
+             <!-- Notifications -->
+            <a href="{{ path('app_home') }}"
+               class="flex items-center gap-3 px-4 py-3 {{ current_path == 'app_home' ? 'bg-blue-900/30 text-blue-300' : 'text-gray-300'}} rounded-lg hover:bg-gray-800/30 hover:text-white transition">
+                <i class="fas fa-bell h-5 w-5"></i>
+                <span class="font-medium truncate">Notifications</span>
             </a>
+
+            {# Boucle sur les menus principaux #}
+            {% for menu_name, menu_data in menus %}
+                <div>
+                    <button 
+                        @click="openMenu = (openMenu === '{{ menu_name }}' ? '' : '{{ menu_name }}')"
+                        class="w-full flex items-center justify-between px-4 py-3 text-gray-300 hover:bg-gray-800/30 hover:text-white rounded-lg transition">
+                        
+                        <div class="flex items-center gap-3">
+                            <i class="{{ menu_data.icon }} h-5 w-5"></i>
+                            <span class="font-medium truncate" title="{{ menu_name }}">{{ menu_name }}</span>
+                        </div>
+
+                        <i class="fas fa-chevron-down inline-block"
+                           :style="openMenu === '{{ menu_name }}' ? 'transform: rotate(0deg); transition: transform 0.3s ease-in-out;' : 'transform: rotate(-90deg); transition: transform 0.3s ease-in-out;'"></i>
+                    </button>
+
+                    <!-- Dropdown -->
+                    <div x-show="openMenu === '{{ menu_name }}'"
+                         x-transition:enter="transition ease-out duration-300"
+                         x-transition:enter-start="opacity-0 scale-y-90 max-h-0"
+                         x-transition:enter-end="opacity-100 scale-y-100 max-h-96"
+                         x-transition:leave="transition ease-in duration-200"
+                         x-transition:leave-start="opacity-100 scale-y-100 max-h-96"
+                         x-transition:leave-end="opacity-0 scale-y-90 max-h-0"
+                         class="overflow-hidden pl-10 mt-2 space-y-1">
+                        
+                        {% for route, data in menu_data.items %}
+                            <a href="{{ route starts with 'inactive_' ? '#' : path(route) }}"
+                               class="flex items-center gap-2 px-4 py-2 rounded-lg text-lg
+                                      {{ route starts with 'inactive_' ? 'text-gray-500 cursor-not-allowed' : (current_path starts with route|split('.')|first ~ '.' ? 'bg-blue-900/30 text-blue-300' : 'text-gray-400 hover:text-white') }}
+                                      hover:bg-gray-800/30 transition truncate"
+                               title="{{ data[0] }}">
+                                <i class="{{ data[1] }} w-4 h-4"></i>
+                                <span>{{ data[0] }}</span>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
 
         </div>
 
