@@ -46,6 +46,18 @@
 				{{ form_errors(registrationForm.plainPassword) }}
 			</div>
 
+			<div>
+				{{ form_label(registrationForm.firstName) }}
+				{{ form_widget(registrationForm.firstName) }}
+				{{ form_errors(registrationForm.firstName) }}
+			</div>
+
+			<div>
+				{{ form_label(registrationForm.lastName) }}
+				{{ form_widget(registrationForm.lastName) }}
+				{{ form_errors(registrationForm.lastName) }}
+			</div>
+
 			<div class="flex items-center my-4">
 				{{ form_widget(registrationForm.agreeTerms) }}
 				{{ form_label(registrationForm.agreeTerms) }}

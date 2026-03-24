@@ -12,6 +12,4 @@ namespace App\SharedKernel\Application\Command;
  * @package  App\SharedKernel\Application\Command
  */
 
-interface CommandHandler{
-    
-}
+interface CommandHandler{}

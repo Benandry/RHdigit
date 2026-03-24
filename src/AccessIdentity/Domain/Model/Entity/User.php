@@ -21,7 +21,6 @@ final class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public static function register(
         string $email,
-        string $hashedPassword,
         string $username,
         string $firstName,
         string $lastName
@@ -33,11 +32,16 @@ final class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return new self(
             $email,
-            $hashedPassword,
+            '',
             $username,
             $firstName,
             $lastName
         );
+    }
+
+    public function setPassword(string $passwordHashed): void
+    {
+        $this->password = $passwordHashed;
     }
 
     public function getId(): ?int

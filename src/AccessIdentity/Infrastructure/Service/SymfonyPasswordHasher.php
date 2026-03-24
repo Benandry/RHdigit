@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\AccessIdentity\Infrastructure\Security;
+namespace App\AccessIdentity\Infrastructure\Service;
 
 use App\AccessIdentity\Application\Service\PasswordHasherInterface;
 use App\AccessIdentity\Domain\Model\Entity\User;
-use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 /**
@@ -19,13 +19,24 @@ use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
 final class SymfonyPasswordHasher implements PasswordHasherInterface
 {
     public function __construct(
-        private PasswordHasherFactoryInterface $userPasswordHasher
+        private UserPasswordHasherInterface $userPasswordHasher
     ) {}
 
-    public function hashPassword(string $plainPassword): string
+    public function hashPassword(User $user, string $plaintextPassword): string
     {
-        // On récupère le hasher par défaut de Symfony
-        $hasher = $this->userPasswordHasher->getPasswordHasher('common'); 
-        return $hasher->hash($plainPassword);
+        
+        return $this->userPasswordHasher->hashPassword(
+            $user,
+            $plaintextPassword
+        );
     }
+
+    // generate a signed url and email it to the user
+        // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+        //     (new TemplatedEmail())
+        //         ->from(new Address('nandry556@gmail.com', 'supportrhdigit'))
+        //         ->to($user->getEmail())
+        //         ->subject('Please Confirm your Email')
+        //         ->htmlTemplate('registration/confirmation_email.html.twig')
+        // );
 }

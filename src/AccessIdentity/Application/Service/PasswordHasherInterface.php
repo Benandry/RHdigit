@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\AccessIdentity\Application\Service;
 
+use App\AccessIdentity\Domain\Model\Entity\User;
+
 /**
  * interface PasswordHasherInterface
  * 
@@ -13,5 +15,5 @@ namespace App\AccessIdentity\Application\Service;
 
 interface PasswordHasherInterface
 {
-    public function hashPassword(string $plainPassword): string;
+    public function hashPassword(User $user, string $plainPassword): string;
 }

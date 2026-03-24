@@ -4,7 +4,7 @@ namespace App\AccessIdentity\Presentation\Web\WriteModel;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class UserModel
+final class UserModel
 {
     public function __construct(
         #[Assert\NotBlank(message: "Le nom d'utilisateur est obligatoire")]
