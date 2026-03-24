@@ -7,8 +7,7 @@ namespace App\Purchase\Infrastructure\Persistence\Orm;
 use App\Purchase\Domain\Model\Entity\Supplier;
 use App\Purchase\Domain\Model\Repository\SupplierRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Symfony\Bridge\Doctrine\ManagerRegistry;
-
+use Doctrine\Persistence\ManagerRegistry;
 /**
  * 
  * Class SupplierOrmRepository
