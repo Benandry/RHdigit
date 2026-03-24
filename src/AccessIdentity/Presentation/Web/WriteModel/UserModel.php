@@ -12,7 +12,14 @@ class UserModel
 
         #[Assert\NotBlank(message: "L'email est obligatoire")]
         #[Assert\Email(message: "Email invalide")]
-        public ?string $email = null
+        public ?string $email = null, 
+
+        #[Assert\NotBlank(message: "Le nom est obligatoire")]
+        public ?string $firstName = null,
+
+        #[Assert\NotBlank(message: "Le prénom est obligatoire")]
+        public ?string $lastName = null,
+
     )
     {
     }

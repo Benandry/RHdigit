@@ -5,6 +5,7 @@ namespace App\AccessIdentity\Presentation\Web\Controller;
 use App\AccessIdentity\Application\Service\EmailVerificationService;
 use App\AccessIdentity\Domain\Model\Entity\User;
 use App\AccessIdentity\Presentation\Web\Form\RegistrationFormType;
+use App\AccessIdentity\Presentation\Web\WriteModel\UserModel;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,31 +29,13 @@ final class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $userModel = new UserModel();
+        $form = $this->createForm(RegistrationFormType::class, $userModel);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
-
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('nandry556@gmail.com', 'supportrhdigit'))
-                    ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
-            // do anything else you need here, like send an email
+           
 
             return $this->redirectToRoute('app_home');
         }

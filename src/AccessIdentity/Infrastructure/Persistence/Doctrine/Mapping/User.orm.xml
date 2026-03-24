@@ -19,6 +19,9 @@
         <field name="password" type="string"/>
         <field name="username" type="string" length="255"/>
         <field name="isVerified" type="boolean"/>
+        <field name="isActive" type="boolean"/>
+        <field name="firstName" type="string" length="255"/>
+        <field name="lastName" type="string" length="255"/>
 
     </entity>
 </doctrine-mapping>
