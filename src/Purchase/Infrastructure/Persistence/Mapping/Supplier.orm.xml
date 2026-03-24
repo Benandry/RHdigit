@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping
+    xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                        https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Purchase\Domain\Model\Entity\Supplier" table="suppliers" repository-class="App\Purchase\Domain\Repository\SupplierRepository">
+
+        <!-- ID -->
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <!-- Fields -->
+        <field name="name" type="string" length="255" nullable="false"/>
+
+        <field name="email" type="string" length="255" nullable="true"/>
+
+        <field name="phone" type="string" length="50" nullable="true"/>
+
+        <field name="address" type="text" nullable="true"/>
+
+        <field name="siret" type="string" length="50" nullable="true"/>
+
+        <field name="status" type="boolean" nullable="true"/>
+
+    </entity>
+
+</doctrine-mapping>

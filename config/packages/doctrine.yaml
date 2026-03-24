@@ -30,6 +30,13 @@ doctrine:
                 dir: '%kernel.project_dir%/src/AccessIdentity/Infrastructure/Persistence/Doctrine/Mapping'
                 prefix: 'App\AccessIdentity\Domain\Model\Entity'
                 alias: AccessIdentity
+            
+            Purchase:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Purchase/Infrastructure/Persistence/Mapping'
+                prefix: 'App\Purchase\Domain\Model\Entity'
+                alias: Purchase
 
 when@test:
     doctrine:
