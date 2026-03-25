@@ -16,4 +16,5 @@ use App\AccessIdentity\Domain\Model\Entity\User;
 interface UserRepository
 {
     public function save(User $user): void;
+    public function getById(int $userId): User;
 }

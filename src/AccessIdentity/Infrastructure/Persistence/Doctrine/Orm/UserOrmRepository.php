@@ -6,6 +6,7 @@ use App\AccessIdentity\Domain\Model\Entity\User;
 use App\AccessIdentity\Domain\Model\Repository\UserRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use DomainException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -44,5 +45,16 @@ class UserOrmRepository extends ServiceEntityRepository implements PasswordUpgra
     {
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
+    }
+
+    public function getById(int $userId): User
+    {
+        $user = $this->find($userId);
+
+        if ($user === null) {
+            throw new DomainException("User not found with $userId");
+        }
+
+        return $user;
     }
 }

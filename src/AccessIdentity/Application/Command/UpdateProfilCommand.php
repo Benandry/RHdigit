@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace App\AccessIdentity\Application\Command;
 
 /**
- * Class RegistrationCommand
+ * Class UpdateProfilCommand
  * 
  * @author Eloi Charly <nandry556@gmail.com>
  * @package App\AccessIdentity\Application\Command
  */
 
 
-class RegistrationCommand
+final readonly class UpdateProfilCommand
 {
     public function __construct(
+        public int $userId,
         public string $username,
         public string $email,
         public string $firstName,
         public string $lastName,
-        public string $plainPassword
     )
     {
     }

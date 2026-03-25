@@ -39,6 +39,33 @@ final class User implements UserInterface, PasswordAuthenticatedUserInterface
         );
     }
 
+     public function updateProfile(
+        ?string $username = null,
+        ?string $firstName = null,
+        ?string $lastName = null,
+        ?string $email = null
+    ): void {
+        if ($username !== null) {
+            $this->username = $username;
+        }
+
+        if ($firstName !== null) {
+            $this->firstName = $firstName;
+        }
+
+        if ($lastName !== null) {
+            $this->lastName = $lastName;
+        }
+
+        if ($email !== null) {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                throw new \InvalidArgumentException("Email invalide");
+            }
+            $this->email = $email;
+        }
+    }
+
+
     public function setPassword(string $passwordHashed): void
     {
         $this->password = $passwordHashed;

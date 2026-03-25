@@ -1,0 +1,68 @@
+<div class="flex flex-col items-center text-center">
+
+    <!-- Avatar -->
+    <div class="relative">
+        <img 
+            src="https://i.pravatar.cc/150?img=3" 
+            class="w-32 h-32 rounded-full object-cover shadow">
+
+        <button class="absolute bottom-0 right-0 bg-gray-800 text-white text-xs px-2 py-1 rounded">
+            Update
+        </button>
+    </div>
+
+    <!-- Name -->
+    <h2 class="mt-4 text-xl font-bold text-gray-800">
+        {{ user_profile.firstName }} {{ user_profile.lastName }}
+    </h2>
+
+    <p class="text-gray-500 text-sm">Utilisateur</p>
+
+    <!-- Profile Completion -->
+    <div class="w-full mt-6">
+        <div class="flex justify-between text-sm text-gray-600 mb-1">
+            <span>Complétion</span>
+            <span>{{ profile_completion ?? 60 }}%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2">
+            <div 
+                class="bg-green-500 h-2 rounded-full transition-all duration-500"
+                style="width: {{ profile_completion ?? 60 }}%">
+            </div>
+        </div>
+    </div>
+
+    <!-- Rating + Activity -->
+    <div class="w-full mt-6 grid grid-cols-2 gap-4">
+
+        <!-- Rating -->
+        <div>
+            <div class="text-xs text-gray-500 mb-1">Rating</div>
+            <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                <div 
+                    class="bg-yellow-400 h-2 rounded-full"
+                    style="width: {{ rating ?? 53 }}%">
+                </div>
+            </div>
+            <div class="text-sm font-semibold text-gray-700">
+                {{ rating ?? 53 }}%
+            </div>
+        </div>
+
+        <!-- Activity -->
+        <div>
+            <div class="text-xs text-gray-500 mb-1">Activity</div>
+            <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                <div 
+                    class="bg-blue-500 h-2 rounded-full"
+                    style="width: {{ activity ?? 90 }}%">
+                </div>
+            </div>
+            <div class="text-sm font-semibold text-gray-700">
+                {{ activity ?? 90 }}%
+            </div>
+        </div>
+
+    </div>
+
+</div>
