@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Mon profil
+{% endblock %}
+
+
+{% block body %}
+	<div class="p-8">
+		<div class="flex justify-between items-center mb-6">
+			<h1 class="text-2xl font-bold text-gray-800">Mon profil</h1>
+		</div>
+
+		<div class="bg-white rounded-xl shadow-sm overflow-hidden">
+			<div class="overflow-x-auto">
+				<div class="p-6">
+					<h2 class="text-xl font-semibold text-gray-700 mb-4">Détails du profil</h2>
+					<p><strong>Nom d'utilisateur:</strong> {{ user_profile.username }}</p>
+					<p><strong>Nom:</strong> {{ user_profile.firstName }}</p>
+					<p><strong>Prénom:</strong> {{ user_profile.lastName }}</p>
+					<p><strong>Email:</strong> {{ user_profile.email }}</p>
+					<p><strong>Status:</strong> {{ user_profile.isActive ? 'Actif' : 'Inactif' }}</p>
+
+					<h2 class="text-xl font-semibold text-gray-700 mt-6 mb-4">Modifier le profil</h2>
+					{{ form_start(form_profile) }}
+						{{ form_row(form_profile.username) }}
+						{{ form_row(form_profile.firstName) }}
+						{{ form_row(form_profile.lastName) }}
+						{{ form_row(form_profile.email) }}
+						<button type="submit" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Enregistrer les modifications</button>
+					{{ form_end(form_profile) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

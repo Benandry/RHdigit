@@ -40,9 +40,20 @@
                      x-transition:leave="transition ease-in duration-150"
                      x-transition:leave-start="opacity-100 scale-100"
                      x-transition:leave-end="opacity-0 scale-95"
-                     class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-20">
-                    <a href="{{ path('app_logout') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Déconnexion</a>
-                </div>
+                     class="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-lg py-2 z-20">
+                   
+                    <a href="{{ path('app_user.profile') }}" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        <i class="fas fa-user-edit text-gray-500"></i>
+                        <span>Modifier mon profil</span>
+                    </a>
+
+                    <!-- Déconnexion -->
+                    <a href="{{ path('app_logout') }}" class="flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Déconnexion</span>
+                    </a>
+
+                   </div>
             </div>
 
         </div>
