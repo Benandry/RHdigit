@@ -13,11 +13,10 @@
         <div class="flex items-center justify-between p-6 border-b">
             <h1 class="text-2xl font-bold text-gray-800">Mon Profil</h1>
 
-            <button 
-                onclick="document.getElementById('editModal').classList.remove('hidden')"
+            <a href="{{ path('app_user.update_profile') }}"
                 class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
                 Modifier
-            </button>
+            </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
@@ -47,21 +46,6 @@
         </div>
     </div>
 
-</div>
-
-<!-- Modal -->
-<div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
-    <div class="bg-white rounded-xl shadow-lg w-full max-w-lg p-6 relative">
-
-        <button 
-            onclick="document.getElementById('editModal').classList.add('hidden')"
-            class="absolute top-3 right-3 text-gray-500 hover:text-black">
-            ✕
-        </button>
-
-        <h2 class="text-xl font-semibold mb-4">Modifier le profil</h2>
-
-    </div>
 </div>
 
 {% endblock %}

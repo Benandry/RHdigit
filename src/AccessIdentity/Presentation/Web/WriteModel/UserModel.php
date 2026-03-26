@@ -2,6 +2,7 @@
 
 namespace App\AccessIdentity\Presentation\Web\WriteModel;
 
+use App\AccessIdentity\Domain\Model\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
 final class UserModel
@@ -22,5 +23,15 @@ final class UserModel
 
     )
     {
+    }
+
+    public static function createFromUser(User $user): self
+    {
+        return new self(
+            username: $user->getUsername(),
+            email: $user->getEmail(),
+            firstName: $user->getFirstName(),
+            lastName: $user->getLastName(),
+        );
     }
 }

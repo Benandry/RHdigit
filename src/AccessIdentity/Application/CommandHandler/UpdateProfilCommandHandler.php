@@ -6,6 +6,7 @@ namespace App\AccessIdentity\Application\CommandHandler;
 
 use App\AccessIdentity\Application\Command\UpdateProfilCommand;
 use App\AccessIdentity\Domain\Model\Repository\UserRepository;
+use App\SharedKernel\Application\Command\CommandHandler;
 
 /**
  * Class UpdateProfilCommandHandler
@@ -15,7 +16,7 @@ use App\AccessIdentity\Domain\Model\Repository\UserRepository;
  */
 
 
-final readonly class UpdateProfilCommandHandler
+final readonly class UpdateProfilCommandHandler implements CommandHandler
 {
     public function __construct(
         private UserRepository $userRepository
